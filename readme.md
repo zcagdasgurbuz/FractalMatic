@@ -49,3 +49,9 @@ You also can drag the fractal around and zoom in. **Double-click** will reset th
 Java version : 11.0.11
 JavaFx version : 15.0.1
 Build by using Maven
+
+............................................................
+
+### Short term plans
+-Fixing the bug in animation behavior in an operating system in Turkish, which is probably caused by some String.toLowercase then		 String.contains calls that are used for element lookups.
+-Standalone executable build
