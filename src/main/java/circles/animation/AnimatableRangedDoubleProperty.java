@@ -5,8 +5,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 /**
  * This class is an animatable double property.
  */
-public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty implements Animatable,
-        Comparable<AnimatableRangedDoubleProperty> {
+public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty implements Animatable{
 
     private double min;
     private double max;
@@ -127,7 +126,7 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
      * @return the natural order value, <0, =0, >0
      */
     @Override
-    public int compareTo(AnimatableRangedDoubleProperty other) {
+    public int compareTo(Animatable other) {
 
         return this.toString().compareTo(other.toString());
     }

@@ -1,5 +1,6 @@
 package circles.calculation;
 
+import circles.animation.Animatable;
 import circles.animation.AnimatableRangedDoubleProperty;
 import circles.animation.AnimationManager;
 import circles.animation.OscillationBehavior;
@@ -128,7 +129,7 @@ public enum PropertyManager {
         okToDraw = new When(numberOfCirclesToBeDrawn.greaterThan(maximumCirclesLimit).or(numberOfCirclesToBeDrawn.lessThan(0)))
                 .then(false).otherwise(true);
 
-        ObservableList<AnimatableRangedDoubleProperty> copyList = FXCollections.observableArrayList(animatableList);
+        ObservableList<Animatable> copyList = FXCollections.observableArrayList(animatableList);
         animationManager.setAvailableAnimatableList(copyList);
 
     }
@@ -371,11 +372,11 @@ public enum PropertyManager {
      */
     public int getAnimationMaxCircleCount() {
         double initialRadiusValue;
-        ObservableList<AnimatableRangedDoubleProperty> list = AnimationManager.INSTANCE.getShownAnimatableList();
+        ObservableList<Animatable> list = AnimationManager.INSTANCE.getShownAnimatableList();
         double sliderValue = 0;
         if (initialRadius.getActiveStatus()) {
             initialRadiusValue = initialRadius.getAnimationBaseValue().doubleValue()
-                    + AnimationManager.INSTANCE.getAmplitudeSliderValue("radius");
+                    + AnimationManager.INSTANCE.getAmplitudeSliderValue(initialRadius);
             if (initialRadiusValue > 200.0) {
                 initialRadiusValue = 200.0;
             }
@@ -393,7 +394,7 @@ public enum PropertyManager {
         double sizeRatioValue;
         if (sizeRatio.getActiveStatus()) {
             sizeRatioValue = sizeRatio.getAnimationBaseValue().doubleValue()
-                    + AnimationManager.INSTANCE.getAmplitudeSliderValue("ratio");
+                    + AnimationManager.INSTANCE.getAmplitudeSliderValue(sizeRatio);
             if (sizeRatioValue > 70.0) {
                 sizeRatioValue = 70.0;
             }
@@ -417,8 +418,8 @@ public enum PropertyManager {
      *
      * @return the list observable list of all animatable properties
      */
-    public ObservableList<AnimatableRangedDoubleProperty> getAnimatableList() {
-        ObservableList<AnimatableRangedDoubleProperty> clone = FXCollections.observableArrayList();
+    public ObservableList<Animatable> getAnimatableList() {
+        ObservableList<Animatable> clone = FXCollections.observableArrayList();
 
 
         return FXCollections.observableArrayList(animatableList);

@@ -1,5 +1,6 @@
 package circles.ui;
 
+import circles.animation.Animatable;
 import circles.animation.AnimatableRangedDoubleProperty;
 import circles.animation.AnimationManager;
 import javafx.beans.binding.Bindings;
@@ -24,7 +25,7 @@ public class AnimationMenuController {
 
 
     public Button addComponentButton;
-    public ComboBox<AnimatableRangedDoubleProperty> animatableComboBox;
+    public ComboBox<Animatable> animatableComboBox;
     public VBox activeAnimationVBox;
     public Button stopAllButton;
     public Button startAllButton;

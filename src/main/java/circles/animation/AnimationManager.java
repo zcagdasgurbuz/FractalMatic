@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
@@ -33,8 +32,8 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Animation manager
@@ -50,50 +49,44 @@ public enum AnimationManager {
             "6.992-18.369-0.068-25.397l30.393-30.827L5.142,30.568c-6.867-6.978-6.773-18.28,0.208-25.247 c6.983-6.963," +
             "18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z";
 
-    private ObservableMap<String, Animatable> shownAnimatables;
-    private ObservableMap<String, Animatable> availableAnimatables;
-
     /** The shown animatable list. */
-    private final ObservableList<AnimatableRangedDoubleProperty> shownAnimatableList;
+    private final ObservableList<Animatable> shownAnimatableList;
     /** Available / stand by animatable list. */
-    private ObservableList<AnimatableRangedDoubleProperty> availableAnimatableList;
-    /** The animator that is going to control animatables.  */
+    private ObservableList<Animatable> availableAnimatableList;
+    /** The animator that is going to control animatables. */
     private final FractalAnimator animator;
-    /** The halted property.*/
+    /** The halted property. */
     private final BooleanProperty haltedProperty;
     /** The maximum number of circles that is going to be drawn the current animation configuration */
     private final IntegerProperty animationCircles;
     /** The maximum number of  circles limit for the animations. */
     private final IntegerProperty maximumCirclesLimit;
-    /** Active/shown controls in the animation menu. */
-    private final List<Control> activeControls;
+    /** Active/shown amplitude sliders in the animation menu. */
+    private final Map<Animatable, Slider> activeAmplitudeSliders;
+    /** Active/shown speed sliders in the animation menu. */
+    private final Map<Animatable, Slider> activeSpeedSliders;
+    /** Active/shown start buttons in the animation menu. */
+    private final Map<Animatable, Button> activeStartButtons;
     /** The animation box that contains shown animation controls. */
     private VBox animationBox;
     /** The animation menu scroll pane. */
     private ScrollPane animationScrollPane;
 
-    /**
-     * Menu item that shows available animatables.
-     */
-    private ComboBox<AnimatableRangedDoubleProperty> animatableComboBox;
-    /**
-     * The listener that is getting assigned to animator
-     */
+    /** Menu item that shows available animatables */
+    private ComboBox<Animatable> animatableComboBox;
+    /** The listener that is getting assigned to animator */
     private final ChangeListener<Object> animationListener;
-    /**
-     * The listener that is going to be assigned to controls when the animation is active.
-     */
+    /** The listener that is going to be assigned to controls when the animation is active. */
     private final ChangeListener<Object> animationCheckListener;
 
     /**
      * Constructor, initializes necessary fields
      */
     AnimationManager() {
-        shownAnimatables = FXCollections.observableHashMap();
-
-
+        activeAmplitudeSliders = new HashMap<>();
+        activeSpeedSliders = new HashMap<>();
+        activeStartButtons = new HashMap<>();
         shownAnimatableList = FXCollections.observableArrayList();
-        activeControls = new ArrayList<>();
         animator = new FractalAnimator();
         animationCircles = new SimpleIntegerProperty(0);
         haltedProperty = new SimpleBooleanProperty();
@@ -122,34 +115,42 @@ public enum AnimationManager {
 
     }
 
-    //TODO - definitely get rid of contains and lower case conversation, you know the ids, you set them.
     /**
      * Sets amplitude slider limits based on the animatable.
      *
-     * @param slider the slider
+     * @param slider     the slider
+     * @param animatable the animatable associated with slider
      */
-    private static void setAmplitudeSliderLimits(Slider slider) {
-        String lowerCaseId = slider.getId().toLowerCase();
+    private static void setAmplitudeSliderLimits(Slider slider, Animatable animatable) {
+        String id = animatable.getId();
         slider.setMin(1);
         slider.setValue(10);
         slider.setBlockIncrement(1);
-        if (lowerCaseId.contains("angle")) {
-            slider.setMax(999);
-            slider.setValue(90);
-        } else if (lowerCaseId.contains("radius")) {
-            slider.setMax(100);
-        } else if (lowerCaseId.contains("ratio")) {
-            slider.setMax(30);
-        } else if (lowerCaseId.contains("line")) {
-            slider.setMax(5);
-            slider.setMin(0.1);
-            slider.setValue(1);
-            slider.setBlockIncrement(0.1);
-        } else if (lowerCaseId.contains("opacity")) {
-            slider.setMax(0.5);
-            slider.setMin(0.01);
-            slider.setValue(0.2);
-            slider.setBlockIncrement(0.05);
+        switch (id) {
+            case "Start Angle":
+                slider.setMax(999);
+                slider.setValue(90);
+                break;
+            case "Initial Radius":
+                slider.setMax(100);
+                break;
+            case "Size Ratio":
+                slider.setMax(30);
+                break;
+            case "Line Width":
+            case "Final Line Width":
+                slider.setMax(5);
+                slider.setMin(0.1);
+                slider.setValue(1);
+                slider.setBlockIncrement(0.1);
+                break;
+            case "Opacity":
+            case "Final Opacity":
+                slider.setMax(0.5);
+                slider.setMin(0.01);
+                slider.setValue(0.2);
+                slider.setBlockIncrement(0.05);
+                break;
         }
     }
 
@@ -158,7 +159,7 @@ public enum AnimationManager {
      *
      * @return the available animatable list
      */
-    public ObservableList<AnimatableRangedDoubleProperty> getAvailableAnimatableList() {
+    public ObservableList<Animatable> getAvailableAnimatableList() {
         return availableAnimatableList;
     }
 
@@ -167,7 +168,7 @@ public enum AnimationManager {
      *
      * @param animatableList the animatable list
      */
-    public void setAvailableAnimatableList(ObservableList<AnimatableRangedDoubleProperty> animatableList) {
+    public void setAvailableAnimatableList(ObservableList<Animatable> animatableList) {
         this.availableAnimatableList = animatableList;
         FXCollections.sort(availableAnimatableList);
     }
@@ -186,7 +187,7 @@ public enum AnimationManager {
      *
      * @param animatableComboBox the animatable combo box
      */
-    public void setAnimationComboBox(ComboBox<AnimatableRangedDoubleProperty> animatableComboBox) {
+    public void setAnimationComboBox(ComboBox<Animatable> animatableComboBox) {
         this.animatableComboBox = animatableComboBox;
     }
 
@@ -204,7 +205,7 @@ public enum AnimationManager {
      *
      * @return the shown animatable list
      */
-    public ObservableList<AnimatableRangedDoubleProperty> getShownAnimatableList() {
+    public ObservableList<Animatable> getShownAnimatableList() {
         return shownAnimatableList;
     }
 
@@ -214,14 +215,12 @@ public enum AnimationManager {
      * @param animatable the animatable that is going to be started
      * @return true if the animation can be started otherwise false
      */
-    public boolean requestStart(AnimatableRangedDoubleProperty animatable) {
-        String id = animatable.toString().toLowerCase();
-        if (id.contains("final")) {
-            if (id.contains("line")) {
-                PropertyManager.INSTANCE.activateFinalLineWidth();
-            } else {
-                PropertyManager.INSTANCE.activateFinalOpacity();
-            }
+    public boolean requestStart(Animatable animatable) {
+        String id = animatable.getId();
+        if (id.equals("Final Line Width")) {
+            PropertyManager.INSTANCE.activateFinalLineWidth();
+        } else if (id.equals("Final Opacity")) {
+            PropertyManager.INSTANCE.activateFinalOpacity();
         }
         int circles = PropertyManager.INSTANCE.getAnimationMaxCircleCount();
         animationCircles.set(circles);
@@ -239,7 +238,7 @@ public enum AnimationManager {
      *
      * @param animatable the animatable
      */
-    public void requestStop(AnimatableRangedDoubleProperty animatable) {
+    public void requestStop(Animatable animatable) {
         animatable.stop();
         checkConditions();
     }
@@ -248,19 +247,9 @@ public enum AnimationManager {
      * Request starts of all shown animatables.
      */
     public void startShownAnimatables() {
-        for (AnimatableRangedDoubleProperty animatable : shownAnimatableList) {
+        for (Animatable animatable : shownAnimatableList) {
             if (!animatable.getActiveStatus()) {
-                for (Node singleBox : animationBox.getChildren()) {
-                    for (Node child : ((VBox) singleBox).getChildren()) {
-                        if (child.getId() != null &&
-                                child.getId().toLowerCase().split("_")[0].equals(animatable.getId().toLowerCase()) &&
-                                child.getId().toLowerCase().contains("button")) {
-                            Button target = ((Button) child);
-                            target.fire();
-                        }
-                    }
-                }
-                requestStart(animatable);
+                activeStartButtons.get(animatable).fire();
             }
         }
     }
@@ -269,19 +258,9 @@ public enum AnimationManager {
      * Request stop animation of all shown animatables.
      */
     public void stopShownAnimatables() {
-        for (AnimatableRangedDoubleProperty animatable : shownAnimatableList) {
+        for (Animatable animatable : shownAnimatableList) {
             if (animatable.getActiveStatus()) {
-                for (Node singleBox : animationBox.getChildren()) {
-                    for (Node child : ((VBox) singleBox).getChildren()) {
-                        if (child.getId() != null &&
-                                child.getId().toLowerCase().split("_")[0].equals(animatable.getId().toLowerCase()) &&
-                                child.getId().toLowerCase().contains("button")) {
-                            Button target = ((Button) child);
-                            target.fire();
-                        }
-                    }
-                }
-
+                activeStartButtons.get(animatable).fire();
             }
         }
     }
@@ -291,7 +270,7 @@ public enum AnimationManager {
      *
      * @param animatable the animatable
      */
-    public void requestCancel(AnimatableRangedDoubleProperty animatable) {
+    public void requestCancel(Animatable animatable) {
         shownAnimatableList.remove(animatable);
         availableAnimatableList.add(animatable);
         FXCollections.sort(availableAnimatableList);
@@ -368,41 +347,36 @@ public enum AnimationManager {
         return animator;
     }
 
-    //TODO - get rid of contains an lower case conversations
     /**
      * Gets amplitude slider value.
      *
-     * @param id the id
+     * @param animatable the animatable
      * @return the amplitude slider value
      */
-    public double getAmplitudeSliderValue(String id) {
-        id = id.toLowerCase();
-        for (Control control : activeControls) {
-            String lowerCaseId = control.getId().toLowerCase();
-            if (lowerCaseId.contains(id) && lowerCaseId.contains("amplitude")) {
-                return ((Slider) control).getValue();
-            }
+    public double getAmplitudeSliderValue(Animatable animatable) {
+        Slider amplitudeSlider = activeAmplitudeSliders.get(animatable);
+        if (amplitudeSlider != null) {
+            return amplitudeSlider.getValue();
+        } else {
+            return -1;
         }
-        return -1;
     }
 
-    //TODO - get rid of contains an lower case conversations
     /**
      * Gets speed slider value.
      *
-     * @param id the id
+     * @param animatable the animatable
      * @return the speed slider value
      */
-    public double getSpeedSliderValue(String id) {
-        id = id.toLowerCase();
-        for (Control control : activeControls) {
-            String lowerCaseId = control.getId().toLowerCase();
-            if (lowerCaseId.contains(id) && lowerCaseId.contains("speed")) {
-                return ((Slider) control).getValue();
-            }
+    public double getSpeedSliderValue(Animatable animatable) {
+        Slider speedSlider = activeSpeedSliders.get(animatable);
+        if (speedSlider != null) {
+            return speedSlider.getValue();
+        } else {
+            return -1;
         }
-        return -1;
     }
+
 
     /**
      * Halted property boolean property.
@@ -424,8 +398,8 @@ public enum AnimationManager {
                 contents.clear();
             }
 
-            activeControls.clear();
-            for (AnimatableRangedDoubleProperty animatable : shownAnimatableList) {
+            clearActiveControls();
+            for (Animatable animatable : shownAnimatableList) {
                 if (animatable.getActiveStatus()) {
                     animatable.stop();
                 }
@@ -437,15 +411,15 @@ public enum AnimationManager {
         }
     }
 
-    //TODO figure good id names or even better create an enum type for every type.
     /**
      * This method adds new element to animation box
      *
      * @param animatable     the animatable is to be added animation menu
      * @param amplitudeValue the amplitude value to be set
      * @param speedValue     the speed value to be set
+     * @param active         the active
      */
-    public void addElementToAnimationBox(AnimatableRangedDoubleProperty animatable,
+    public void addElementToAnimationBox(Animatable animatable,
                                          Double amplitudeValue, Double speedValue, boolean active) {
         availableAnimatableList.remove(animatable);
         shownAnimatableList.add(animatable);
@@ -467,7 +441,7 @@ public enum AnimationManager {
         Label amplitudeLabel = new Label("Amplitude");
         Slider amplitudeSlider = new Slider();
         amplitudeSlider.setId(id + "_amplitudeSlider");
-        setAmplitudeSliderLimits(amplitudeSlider);
+        setAmplitudeSliderLimits(amplitudeSlider, animatable);
         if (amplitudeValue != null) {
             amplitudeSlider.setValue(amplitudeValue);
         }
@@ -537,21 +511,16 @@ public enum AnimationManager {
 
         closeButton.setOnMouseClicked(event -> {
             animationBox.getChildren().remove(newBox);
-            activeControls.remove(amplitudeSlider);
-            activeControls.remove(speedSlider);
-            activeControls.remove(animationStartStopButton);
+            removeActiveControls(animatable);
             requestCancel(animatable);
         });
 
         //finalize
         animationBox.getChildren().add(newBox);
-        activeControls.add(amplitudeSlider);
-        activeControls.add(speedSlider);
-        activeControls.add(animationStartStopButton);
+        addActiveControls(animatable, amplitudeSlider, speedSlider, animationStartStopButton);
 
         if (active) {
             animationStartStopButton.fire();
-            //requestStart(animatable);
         }
     }
 
@@ -565,44 +534,52 @@ public enum AnimationManager {
         configuration.setAnimationMaximumCircles(maximumCirclesLimit.get());
         if (animator.activeProperty().get()) {
             configuration.setAnimationActive(true);
-            for (AnimatableRangedDoubleProperty animatable : shownAnimatableList) {
+            for (Animatable animatable : shownAnimatableList) {
                 if (animatable.getActiveStatus()) {
-                    String id = animatable.getId().toLowerCase();
-                    if (id.contains("start")) {
-                        configuration.setStartAngleAnimationActive(true);
-                        configuration.setStartAngle(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setStartAngleAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setStartAngleAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("initial")) {
-                        configuration.setInitialRadiusAnimationActive(true);
-                        configuration.setInitialRadius(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setInitialRadiusAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setInitialRadiusAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("ratio")) {
-                        configuration.setSizeRatioAnimationActive(true);
-                        configuration.setSizeRatio(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setSizeRatioAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setSizeRatioAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("line") && !id.contains("final")) {
-                        configuration.setLineWidthAnimationActive(true);
-                        configuration.setLineWidth(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setLineWidthAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setLineWidthAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("line") && id.contains("final")) {
-                        configuration.setLineWidthFinalAnimationActive(true);
-                        configuration.setLineWidthFinal(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setLineWidthFinalAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setLineWidthFinalAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("opacity") && !id.contains("final")) {
-                        configuration.setOpacityAnimationActive(true);
-                        configuration.setOpacity(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setOpacityAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setOpacityAnimationSpeed(getSpeedSliderValue(id));
-                    } else if (id.contains("opacity") && id.contains("final")) {
-                        configuration.setOpacityFinalAnimationActive(true);
-                        configuration.setOpacityFinal(animatable.getAnimationBaseValue().doubleValue());
-                        configuration.setOpacityFinalAnimationAmplitude(getAmplitudeSliderValue(id));
-                        configuration.setOpacityFinalAnimationSpeed(getSpeedSliderValue(id));
+                    String id = animatable.getId();
+                    switch (id) {
+                        case "Start Angle":
+                            configuration.setStartAngleAnimationActive(true);
+                            configuration.setStartAngle(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setStartAngleAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setStartAngleAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Initial Radius":
+                            configuration.setInitialRadiusAnimationActive(true);
+                            configuration.setInitialRadius(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setInitialRadiusAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setInitialRadiusAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Size Ratio":
+                            configuration.setSizeRatioAnimationActive(true);
+                            configuration.setSizeRatio(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setSizeRatioAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setSizeRatioAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Line Width":
+                            configuration.setLineWidthAnimationActive(true);
+                            configuration.setLineWidth(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setLineWidthAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setLineWidthAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Final Line Width":
+                            configuration.setLineWidthFinalAnimationActive(true);
+                            configuration.setLineWidthFinal(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setLineWidthFinalAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setLineWidthFinalAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Opacity":
+                            configuration.setOpacityAnimationActive(true);
+                            configuration.setOpacity(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setOpacityAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setOpacityAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
+                        case "Final Opacity":
+                            configuration.setOpacityFinalAnimationActive(true);
+                            configuration.setOpacityFinal(animatable.getAnimationBaseValue().doubleValue());
+                            configuration.setOpacityFinalAnimationAmplitude(getAmplitudeSliderValue(animatable));
+                            configuration.setOpacityFinalAnimationSpeed(getSpeedSliderValue(animatable));
+                            break;
                     }
                 }
             }
@@ -623,60 +600,58 @@ public enum AnimationManager {
         if (configuration.isAnimationActive()) {
             if (configuration.isStartAngleAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("start angle"),
+                        getAnimatableFromAvailableList("Start Angle"),
                         configuration.getStartAngleAnimationAmplitude(),
                         configuration.getStartAngleAnimationSpeed(), true);
             }
             if (configuration.isInitialRadiusAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("initial radius"),
+                        getAnimatableFromAvailableList("Initial Radius"),
                         configuration.getInitialRadiusAnimationAmplitude(),
                         configuration.getInitialRadiusAnimationSpeed(), true);
             }
             if (configuration.isSizeRatioAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("size ratio"),
+                        getAnimatableFromAvailableList("Size Ratio"),
                         configuration.getSizeRatioAnimationAmplitude(),
                         configuration.getSizeRatioAnimationSpeed(), true);
             }
             if (configuration.isLineWidthFinalAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("final line width"),
+                        getAnimatableFromAvailableList("Final Line Width"),
                         configuration.getLineWidthFinalAnimationAmplitude(),
                         configuration.getLineWidthFinalAnimationSpeed(), true);
             }
             if (configuration.isLineWidthAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("line width"),
+                        getAnimatableFromAvailableList("Line Width"),
                         configuration.getLineWidthAnimationAmplitude(),
                         configuration.getLineWidthAnimationSpeed(), true);
             }
             if (configuration.isOpacityFinalAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("final opacity"),
+                        getAnimatableFromAvailableList("Final Opacity"),
                         configuration.getOpacityFinalAnimationAmplitude(),
                         configuration.getOpacityFinalAnimationSpeed(), true);
             }
             if (configuration.isOpacityAnimationActive()) {
                 addElementToAnimationBox(
-                        getAnimatableFromAvailableList("opacity"),
+                        getAnimatableFromAvailableList("Opacity"),
                         configuration.getOpacityAnimationAmplitude(),
                         configuration.getOpacityAnimationSpeed(), true);
             }
         }
     }
 
-    //TODO - Get rid of contains and lowercase conversations
     /**
      * Gets animatable from available list.
      *
      * @param id the id of the animatable
      * @return the animatable from available list
      */
-    public AnimatableRangedDoubleProperty getAnimatableFromAvailableList(String id) {
-        id = id.toLowerCase();
-        for (AnimatableRangedDoubleProperty animatable : availableAnimatableList) {
-            if (animatable.getId().toLowerCase().equals(id)) {
+    public Animatable getAnimatableFromAvailableList(String id) {
+        for (Animatable animatable : availableAnimatableList) {
+            if (animatable.getId().equals(id)) {
                 return animatable;
             }
         }
@@ -755,6 +730,41 @@ public enum AnimationManager {
      */
     public IntegerProperty maximumCirclesLimit() {
         return maximumCirclesLimit;
+    }
+
+
+    /**
+     * Add active controls of animatable.
+     *
+     * @param animatable      the animatable
+     * @param amplitudeSlider the amplitude slider
+     * @param speedSlider     the speed slider
+     * @param startButton     the start button
+     */
+    private void addActiveControls(Animatable animatable, Slider amplitudeSlider, Slider speedSlider, Button startButton) {
+        activeAmplitudeSliders.put(animatable, amplitudeSlider);
+        activeSpeedSliders.put(animatable, speedSlider);
+        activeStartButtons.put(animatable, startButton);
+    }
+
+    /**
+     * Remove active controls for animatable.
+     *
+     * @param animatable the animatable
+     */
+    private void removeActiveControls(Animatable animatable) {
+        activeAmplitudeSliders.remove(animatable);
+        activeSpeedSliders.remove(animatable);
+        activeStartButtons.remove(animatable);
+    }
+
+    /**
+     * Clear active controls.
+     */
+    private void clearActiveControls() {
+        activeAmplitudeSliders.clear();
+        activeSpeedSliders.clear();
+        activeStartButtons.clear();
     }
 
 }

@@ -4,7 +4,7 @@ package circles.animation;
  * This interface can be thought of as an observer, however there are more of an observer since there are some other
  * functions to be able to perform animation
  */
-public interface Animatable {
+public interface Animatable extends Comparable<Animatable>{
 
     /**
      * This method is an update request, performs necessary functions
