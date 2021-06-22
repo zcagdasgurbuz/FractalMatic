@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
@@ -49,9 +50,13 @@ public enum AnimationManager {
             "6.992-18.369-0.068-25.397l30.393-30.827L5.142,30.568c-6.867-6.978-6.773-18.28,0.208-25.247 c6.983-6.963," +
             "18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z";
 
+    private ObservableMap<String, Animatable> shownAnimatables;
+    private ObservableMap<String, Animatable> availableAnimatables;
 
     /** The shown animatable list. */
     private final ObservableList<AnimatableRangedDoubleProperty> shownAnimatableList;
+    /** Available / stand by animatable list. */
+    private ObservableList<AnimatableRangedDoubleProperty> availableAnimatableList;
     /** The animator that is going to control animatables.  */
     private final FractalAnimator animator;
     /** The halted property.*/
@@ -60,8 +65,6 @@ public enum AnimationManager {
     private final IntegerProperty animationCircles;
     /** The maximum number of  circles limit for the animations. */
     private final IntegerProperty maximumCirclesLimit;
-    /** Available / stand by animatable list. */
-    private ObservableList<AnimatableRangedDoubleProperty> availableAnimatableList;
     /** Active/shown controls in the animation menu. */
     private final List<Control> activeControls;
     /** The animation box that contains shown animation controls. */
@@ -86,6 +89,9 @@ public enum AnimationManager {
      * Constructor, initializes necessary fields
      */
     AnimationManager() {
+        shownAnimatables = FXCollections.observableHashMap();
+
+
         shownAnimatableList = FXCollections.observableArrayList();
         activeControls = new ArrayList<>();
         animator = new FractalAnimator();

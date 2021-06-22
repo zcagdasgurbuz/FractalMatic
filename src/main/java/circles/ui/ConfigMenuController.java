@@ -1,14 +1,17 @@
 package circles.ui;
 
 import circles.calculation.PropertyManager;
-import circles.util.ConfigurationManager;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Control;
+import javafx.scene.control.Slider;
+import javafx.scene.control.Spinner;
 import javafx.scene.text.Text;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Configuration menu controller
@@ -45,7 +48,7 @@ public class ConfigMenuController {
      * Initializes before loading
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         //attach text fields corresponding sliders
         startAngleText.textProperty().bind(Bindings.format("%3.1f", startAngleSlider.valueProperty()));
         initialRadiusText.textProperty().bind(Bindings.format("%3.1f", initialRadiusSlider.valueProperty()));
@@ -54,7 +57,6 @@ public class ConfigMenuController {
         lineWidthFinalText.textProperty().bind(Bindings.format("%1.2f", lineWidthFinalSlider.valueProperty()));
         opacityText.textProperty().bind(Bindings.format("%1.2f", opacitySlider.valueProperty()));
         opacityFinalText.textProperty().bind(Bindings.format("%1.2f", opacityFinalSlider.valueProperty()));
-
         propertyManager.setConfigControls(getControls()); // send controls to property manager
         propertyManager.createBindings(); // let property manager create bindings
         propertyManager.addListeners();  // let property manager start listening
@@ -65,23 +67,23 @@ public class ConfigMenuController {
      *
      * @return all controls in the config menu
      */
-    public List<Control> getControls(){
-        ArrayList<Control> controls = new ArrayList<>();
-        controls.add(backgroundColorPicker);
-        controls.add(fractalColorFinalCheckBox);
-        controls.add(fractalColorPicker);
-        controls.add(fractalFinalColorPicker);
-        controls.add(childCountSpinner);
-        controls.add(recursionsSpinner);
-        controls.add(startAngleSlider);
-        controls.add(initialRadiusSlider);
-        controls.add(sizeRatioSlider);
-        controls.add(lineWidthFinalCheckBox);
-        controls.add(lineWidthSlider);
-        controls.add(lineWidthFinalSlider);
-        controls.add(opacityFinalCheckBox);
-        controls.add(opacitySlider);
-        controls.add(opacityFinalSlider);
+    public Map<String, Control> getControls() {
+        HashMap<String, Control> controls = new HashMap<>();
+        controls.put("background_color_picker", backgroundColorPicker);
+        controls.put("fractal_final_color_checkbox", fractalColorFinalCheckBox);
+        controls.put("fractal_color_picker", fractalColorPicker);
+        controls.put("fractal_final_color_picker", fractalFinalColorPicker);
+        controls.put("child_count_spinner", childCountSpinner);
+        controls.put("recursions_spinner", recursionsSpinner);
+        controls.put("start_angle_slider", startAngleSlider);
+        controls.put("initial_radius_slider", initialRadiusSlider);
+        controls.put("size_ratio_slider", sizeRatioSlider);
+        controls.put("line_width_final_checkbox", lineWidthFinalCheckBox);
+        controls.put("line_width_slider", lineWidthSlider);
+        controls.put("line_width_final_slider", lineWidthFinalSlider);
+        controls.put("opacity_final_checkbox", opacityFinalCheckBox);
+        controls.put("opacity_slider", opacitySlider);
+        controls.put("opacity_final_slider", opacityFinalSlider);
         return controls;
     }
 

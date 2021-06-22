@@ -17,7 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This singleton class handles the bindings of controls and some various calculations
@@ -52,7 +54,7 @@ public enum PropertyManager {
     private CheckBox fractalColorFinalCheckBox;
     private CheckBox lineWidthFinalCheckBox;
     private CheckBox opacityFinalCheckBox;
-    private List<Control> configControls;
+    private Map<String, Control> configControls;
     private List<Observable> propertyList;
     private ObservableList<AnimatableRangedDoubleProperty> animatableList;
 
@@ -136,7 +138,7 @@ public enum PropertyManager {
      *
      * @param controls all control of config menu
      */
-    public void setConfigControls(List<Control> controls) {
+    public void setConfigControls(Map<String, Control> controls) {
         configControls = controls;
     }
 
@@ -145,41 +147,23 @@ public enum PropertyManager {
      */
     @SuppressWarnings("unchecked")
     public void createBindings() {
-        for (Control control : configControls) {
-            String id = control.getId().toLowerCase();
-            if (id.contains("background")) {
-                ((ColorPicker) control).valueProperty().bindBidirectional(backGroundColor);
-            } else if (id.contains("fractal") && !id.contains("final") && !id.contains("check")) {
-                ((ColorPicker) control).valueProperty().bindBidirectional(fractalColor);
-            } else if (id.contains("fractal") && id.contains("final") && !id.contains("check")) {
-                ((ColorPicker) control).valueProperty().bindBidirectional(fractalFinalColor);
-            } else if (id.contains("fractal") && id.contains("final") && id.contains("check")) {
-                this.fractalColorFinalCheckBox = (CheckBox) control;
-            } else if (id.contains("child")) {
-                ((Spinner<Integer>) control).getValueFactory().valueProperty().bindBidirectional(childCountObjectProp);
-            } else if (id.contains("recursion")) {
-                ((Spinner<Integer>) control).getValueFactory().valueProperty().bindBidirectional(recursionDepthObjectProp);
-            } else if (id.contains("start")) {
-                ((Slider) control).valueProperty().bindBidirectional(startAngle);
-            } else if (id.contains("initial")) {
-                ((Slider) control).valueProperty().bindBidirectional(initialRadius);
-            } else if (id.contains("ratio")) {
-                ((Slider) control).valueProperty().bindBidirectional(sizeRatio);
-            } else if (id.contains("line") && !id.contains("final") && !id.contains("check")) {
-                ((Slider) control).valueProperty().bindBidirectional(lineWidth);
-            } else if (id.contains("line") && id.contains("final") && !id.contains("check")) {
-                ((Slider) control).valueProperty().bindBidirectional(lineWidthFinal);
-            } else if (id.contains("line") && id.contains("final") && id.contains("check")) {
-                this.lineWidthFinalCheckBox = (CheckBox) control;
-            } else if (id.contains("opacity") && !id.contains("final") && !id.contains("check")) {
-                ((Slider) control).valueProperty().bindBidirectional(opacity);
-            } else if (id.contains("opacity") && id.contains("final") && !id.contains("check")) {
-                ((Slider) control).valueProperty().bindBidirectional(opacityFinal);
-            } else if (id.contains("opacity") && id.contains("final") && id.contains("check")) {
-                this.opacityFinalCheckBox = (CheckBox) control;
-            }
-        }
-
+        ((ColorPicker) configControls.get("background_color_picker")).valueProperty().bindBidirectional(backGroundColor);
+        ((ColorPicker) configControls.get("fractal_color_picker")).valueProperty().bindBidirectional(fractalColor);
+        ((ColorPicker) configControls.get("fractal_final_color_picker")).valueProperty().bindBidirectional(fractalFinalColor);
+        this.fractalColorFinalCheckBox = (CheckBox) configControls.get("fractal_final_color_checkbox");
+        ((Spinner<Integer>) configControls.get("child_count_spinner"))
+                .getValueFactory().valueProperty().bindBidirectional(childCountObjectProp);
+        ((Spinner<Integer>) configControls.get("recursions_spinner"))
+                .getValueFactory().valueProperty().bindBidirectional(recursionDepthObjectProp);
+        ((Slider) configControls.get("start_angle_slider")).valueProperty().bindBidirectional(startAngle);
+        ((Slider) configControls.get("initial_radius_slider")).valueProperty().bindBidirectional(initialRadius);
+        ((Slider) configControls.get("size_ratio_slider")).valueProperty().bindBidirectional(sizeRatio);
+        ((Slider) configControls.get("line_width_slider")).valueProperty().bindBidirectional(lineWidth);
+        ((Slider) configControls.get("line_width_final_slider")).valueProperty().bindBidirectional(lineWidthFinal);
+        this.lineWidthFinalCheckBox = (CheckBox) configControls.get("line_width_final_checkbox");
+        ((Slider) configControls.get("opacity_slider")).valueProperty().bindBidirectional(opacity);
+        ((Slider) configControls.get("opacity_final_slider")).valueProperty().bindBidirectional(opacityFinal);
+        this.opacityFinalCheckBox = (CheckBox) configControls.get("opacity_final_checkbox");
     }
 
     /**
