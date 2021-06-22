@@ -35,7 +35,7 @@ Randomizer is a fun tool. You choose what to randomize and let the randomizer cr
 
 #### Save / Load
 
-After creating interesting fractals by Randomizer or manually adjusting parameters, you can save the configurations you like and load them later.
+After creating interesting fractals by Randomizer or setting parameters manually, you can save the configurations you like and load them later.
 
 <img src="screenshots/ex_save_menu.jpg" width="350">
 
