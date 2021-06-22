@@ -7,9 +7,9 @@ Fractalmatic has only one type of fractal at the moment, but the plan is to add 
 The idea is super simple; the fractal starts with drawing the main/parent circle, then its evenly separated children - circles smaller than the parent circle- are drawn around the main/parent circle, and this process repeats for every child circle -the child becomes main it gets its children. Even though this process is very simple, the results are amazing. Here are some screenshots,
 
 
-<img src="screenshots/ex2.jpg" width="350"> | <img src="screenshots/ex3.jpg" width="350">
-<img src="screenshots/ex4.jpg" width="350"> | <img src="screenshots/ex5.jpg" width="350">
-<img src="screenshots/ex6.jpg" width="350"> | <img src="screenshots/ex7.jpg" width="350">
+<img src="screenshots/ex2.jpg" width="350"> <img src="screenshots/ex3.jpg" width="350">
+<img src="screenshots/ex4.jpg" width="350"> <img src="screenshots/ex5.jpg" width="350">
+<img src="screenshots/ex6.jpg" width="350"> <img src="screenshots/ex7.jpg" width="350">
 
 #### Configurations
 
