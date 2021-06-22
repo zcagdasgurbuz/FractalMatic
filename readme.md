@@ -56,5 +56,7 @@ Build by using Maven
 ............................................................
 
 ### Download
+To run FractalMatic, extract the zip, go to /bin folder and then, run the launch.bat file for windows or launch.sh for linux
 
-<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic.zip?raw=true">For Windows</a>
+<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic.zip?raw=true">Download for Windows</a>
+
