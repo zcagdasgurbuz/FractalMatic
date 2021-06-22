@@ -54,4 +54,5 @@ Build by using Maven
 
 ### Short term plans
 -Fixing the bug in animation behavior in an operating system in Turkish, which is probably caused by some String.toLowercase then		 String.contains calls that are used for element lookups.
+
 -Standalone executable build
