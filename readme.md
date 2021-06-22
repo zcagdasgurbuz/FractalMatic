@@ -23,9 +23,23 @@ You can also animate some of these parameters, to be exact, everything below and
 
 <img src="screenshots/ex_anim_menu.jpg" width="350"> 
 
+<img src="screenshots/animation_ex.gif" width="700"> 
+<img src="screenshots/animation_ex1.gif" width="700"> 
+
 #### Randomizer
 
 Randomizer is a fun tool. You choose what to randomize and let the randomizer create a configuration for you, including animation. The keyboard shortcut is **CTRL + R** Randomizer will generate configuration within the specified circles limit.
 
 <img src="screenshots/ex_randomizer_menu.jpg" width="700">
 
+#### Save / Load
+
+After creating interesting fractals by Randomizer or manually adjusting parameters, you can save the configurations you like and load them later.
+
+<img src="screenshots/ex_save_menu.jpg" width="350">
+
+### Technical Details
+
+Java version : 11.0.11
+JavaFx version : 15.0.1
+Build by using Maven
