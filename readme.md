@@ -15,13 +15,13 @@ The idea is super simple; the fractal starts with drawing the main/parent circle
 
 As you see, each fractal is completely different from others, it's because you can change many parameters that will change the final result. You can see what parameters are available in the configuration menu screenshot below,
 
-<img src="screenshots/ex_config_menu.jpg" width="700"> 
+<img src="screenshots/ex_config_menu.jpg" width="350"> 
 
 #### Animation
 
 You can also animate some of these parameters, to be exact, everything below and including the start angle in the configuration menu.  Animation is basically an oscillation, and you can define amplitude and speed values.
 
-<img src="screenshots/ex_anim_menu.jpg" width="700"> 
+<img src="screenshots/ex_anim_menu.jpg" width="350"> 
 
 #### Randomizer
 
