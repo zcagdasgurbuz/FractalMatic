@@ -15,6 +15,7 @@ The idea is super simple; the fractal starts with drawing the main/parent circle
 
 As you see, each fractal is completely different from others, it's because you can change many parameters that will change the final result. You can see what parameters are available in the configuration menu screenshot below,
 
+
 <img src="screenshots/ex_config_menu.jpg" width="350"> 
 
 #### Animation
@@ -37,6 +38,11 @@ Randomizer is a fun tool. You choose what to randomize and let the randomizer cr
 After creating interesting fractals by Randomizer or manually adjusting parameters, you can save the configurations you like and load them later.
 
 <img src="screenshots/ex_save_menu.jpg" width="350">
+
+
+#### Drag / Zoom
+
+You also can drag the fractal around and zoom in. **Double-click** will reset the position and the zoom.
 
 ### Technical Details
 
