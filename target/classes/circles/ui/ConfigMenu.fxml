@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="circles.ui.ConfigMenuController">
+
+    <content>
+        <VBox id="config_vBox" spacing="15.0">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <children>
+                <HBox spacing="5.0">
+                    <children>
+                        <VBox prefWidth="150.0" spacing="5.0">
+                            <children>
+                                <Label text="Background"/>
+                                <ColorPicker fx:id="backgroundColorPicker" minHeight="-Infinity"/>
+                            </children>
+                        </VBox>
+                        <VBox prefWidth="150.0" spacing="5.0">
+                            <children>
+                                <HBox fillHeight="false" spacing="5.0">
+                                    <children>
+                                        <Label text="Fractal"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <CheckBox fx:id="fractalColorFinalCheckBox" alignment="BOTTOM_CENTER"
+                                                  mnemonicParsing="false" text="Final">
+                                        </CheckBox>
+                                    </children>
+                                </HBox>
+                                <ColorPicker fx:id="fractalColorPicker" minHeight="-Infinity"/>
+                                <ColorPicker fx:id="fractalFinalColorPicker"
+                                             managed="${fractalColorFinalCheckBox.selected}" minHeight="-Infinity"
+                                             visible="${fractalColorFinalCheckBox.selected}"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox spacing="5.0">
+                    <children>
+                        <VBox prefWidth="150.0">
+                            <children>
+                                <Label text="Child Count"/>
+                                <Spinner fx:id="childCountSpinner" initialValue="3" max="13" min="1"/>
+                            </children>
+                        </VBox>
+                        <VBox prefWidth="150.0">
+                            <children>
+                                <Label text="Recursions"/>
+                                <Spinner fx:id="recursionsSpinner" initialValue="3" max="10" min="1"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Start Angle"/>
+                        <HBox prefWidth="200.0">
+                            <children>
+                                <Slider fx:id="startAngleSlider" blockIncrement="1.0" majorTickUnit="1.0" max="360"
+                                        min="0" minorTickCount="0" snapToTicks="true" value="90" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="startAngleText" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Initial Radius"/>
+                        <HBox prefWidth="200.0">
+                            <children>
+                                <Slider fx:id="initialRadiusSlider" blockIncrement="0.1" majorTickUnit="10.0" max="200"
+                                        min="5" minorTickCount="1" value="100" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="initialRadiusText" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Size Ratio of Child to Parent %"/>
+                        <HBox prefWidth="200.0">
+                            <children>
+                                <Slider fx:id="sizeRatioSlider" blockIncrement="0.1" majorTickUnit="10.0" max="70"
+                                        min="20" minorTickCount="1" value="50" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="sizeRatioText" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <HBox spacing="5.0">
+                            <children>
+                                <Label text="Line Width"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <CheckBox fx:id="lineWidthFinalCheckBox" mnemonicParsing="false" text="Final"/>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Slider fx:id="lineWidthSlider" blockIncrement="0.1" majorTickUnit="1.0" max="10"
+                                        min="0.1" minorTickCount="1" value="1" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="lineWidthText" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Slider fx:id="lineWidthFinalSlider" blockIncrement="0.1" majorTickUnit="1.0"
+                                        managed="${lineWidthFinalCheckBox.selected}" max="10" min="0.1"
+                                        minorTickCount="1" value="1" visible="${lineWidthFinalCheckBox.selected}"
+                                        HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="lineWidthFinalText" managed="${lineWidthFinalCheckBox.selected}"
+                                      strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sliderValueText" text="Text"
+                                      textAlignment="RIGHT" visible="${lineWidthFinalCheckBox.selected}"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <HBox spacing="5.0">
+                            <children>
+                                <Label text="Opacity"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <CheckBox fx:id="opacityFinalCheckBox" mnemonicParsing="false" text="Final"/>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Slider fx:id="opacitySlider" blockIncrement="0.05" majorTickUnit="1.0" max="1"
+                                        min="0.01" minorTickCount="1" value="1" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="opacityText" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
+                                      wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Slider fx:id="opacityFinalSlider" blockIncrement="0.05" majorTickUnit="1.0"
+                                        managed="${opacityFinalCheckBox.selected}" max="1" min="0.01" value="1"
+                                        visible="${opacityFinalCheckBox.selected}" HBox.hgrow="ALWAYS"/>
+                                <Text fx:id="opacityFinalText" managed="${opacityFinalCheckBox.selected}"
+                                      strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sliderValueText" text="Text"
+                                      visible="${opacityFinalCheckBox.selected}" wrappingWidth="50.0">
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+
+    </content>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+</ScrollPane>

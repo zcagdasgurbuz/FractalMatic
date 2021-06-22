@@ -1,0 +1,264 @@
+
+
+/* ------------------------------------------------------- */
+/*                   Theme Colors                          */
+/* ------------------------------------------------------- */
+
+@font-face {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.root {
+    -fx-base: #393333;
+    -fx-accent: #cfffdd;
+    -fx-default-button: #0d343b;
+    -fx-focus-color: #affffa;
+    -fx-faint-focus-color: #efefef22;
+    -fx-focused-text-base-color: ladder(
+            -fx-selection-bar,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color 46%,
+            -fx-dark-text-color 59%,
+            -fx-mid-text-color 60%
+    );
+    -fx-focused-mark-color: -fx-focused-text-base-color;
+    -fx-font-family: "JetBrains Mono";
+
+}
+
+
+/* ------------------------------------------------------- */
+/*                   Fonts Related                         */
+/* ------------------------------------------------------- */
+
+.text-input:focused {
+    -fx-highlight-text-fill: ladder(
+            -fx-highlight-fill,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color 46%,
+            -fx-dark-text-color 59%,
+            -fx-mid-text-color 60%
+    );
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-light-text-color;
+}
+
+/* ------------------------------------------------------- */
+/*                   Scroll Pane settings                   */
+/* ------------------------------------------------------- */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+/* ------------------------------------------------------- */
+/*                   Scroll Bar settings                   */
+/* ------------------------------------------------------- */
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-bar:hover {
+    -fx-background-color: -fx-base;
+    -fx-background: -fx-base;
+    -fx-opacity: 0.5;
+}
+
+/* The main scrollbar **track** CSS class  */
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 2em;
+    -fx-opacity: 0.2;
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    /*    -fx-background-radius: 0em;
+        -fx-padding:0 0 10 0;*/
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    /*    -fx-background-radius: 0em;
+        -fx-padding:0 10 0 0;*/
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: derive(-fx-base, 90%);
+    -fx-background-insets: 1, 0, 0;
+    -fx-background-radius: 1em;
+    -fx-opacity: 0.6;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-opacity: 0.9;
+}
+
+/* ------------------------------------------------------- */
+/*                      Accordion Menu                     */
+/* ------------------------------------------------------- */
+
+.accordion > .titled-pane {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-box-border: transparent;
+}
+
+.titled-pane > .title {
+    -fx-translate-x: -3px;
+    -fx-max-width: 300px;
+    -title-mid-color:derive(-fx-base,10%);
+    -title-final-color: derive(-fx-base,25%);
+    -fx-background-color: linear-gradient(to bottom, -fx-base 70%, -title-mid-color 90%, -title-final-color );
+
+
+}
+
+.titled-pane > .title > .text{
+    -fx-font-size: 14;
+
+}
+
+/* ------------------------------------------------------- */
+/*                      Sliding Menu                       */
+/* ------------------------------------------------------- */
+#slidingMenu {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+.jfx-hamburger {
+    /*-fx-padding: 5 0 0;*/
+    -fx-pref-width: 30px;
+    -fx-pref-height: 50px;
+    -fx-spacing: 5px;
+    -fx-cursor: hand;
+}
+
+.jfx-hamburger > StackPane {
+
+    -fx-pref-width: 30px;
+    -fx-pref-height: 4px;
+    -fx-background-color: -fx-base;
+    -fx-background-radius: 3px;
+}
+
+
+.sliderValueText {
+    -fx-fill: white;
+    -fx-font-size: 16;
+    -fx-translate-y: -5px;
+    -fx-text-alignment: right;
+}
+
+/* ------------------------------------------------------- */
+/*                      Decorator                          */
+/* ------------------------------------------------------- */
+
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -fx-base;
+    -fx-font-size: 16;
+    -fx-font-weight: bolder;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -fx-base;
+    -fx-border-width: 0 4 4 4;
+
+}
+/* ------------------------------------------------------- */
+/*                      Config Menu                        */
+/* ------------------------------------------------------- */
+
+
+
+/* ------------------------------------------------------- */
+/*                      Animation Menu                     */
+/* ------------------------------------------------------- */
+
+.animationCloseButton {
+    -fx-min-width: 15px;
+    -fx-min-height: 15px;
+    -fx-pref-width: 15px;
+    -fx-pref-height: 15px;
+    -fx-max-width: 15px;
+    -fx-max-height: 15px;
+
+    -fx-background-color: -fx-base;
+    -fx-translate-x: -5px;
+    -fx-translate-y: 5px;
+}
+
+
+.animationCloseButton:hover {
+    -fx-background-color: -fx-accent;
+}
+
+/* ------------------------------------------------------- */
+/*                      Info Display                       */
+/* ------------------------------------------------------- */
+.infoText {
+    -fx-fill: -fx-light-text-color;
+    -fx-font-size: 14px;
+}
+
+.infoErrorText {
+    -fx-fill: red;
+    -fx-border-width: 1px;
+    -fx-font-weight: bolder;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian,-fx-base,2,2,0,0);
+}
+
+.infoHeader {
+    -fx-font-weight: bolder;
+    -fx-font-size: 18px;
+    -fx-text-fill: -fx-accent;
+}
+
+.infoLabel {
+    -fx-font-size: 16px;
+}
+
+.popup-container{
+    -fx-fill: -fx-base;
+    -fx-opacity: 0.6;
+}
+
+
+.randomizerSettings{
+    -fx-background-color: -fx-base;
+}
+
+
+.closeButton{
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-height: 25px;
+    -fx-background-color: -fx-base;
+}

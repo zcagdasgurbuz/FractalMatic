@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<Pane fx:id="mainPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="circles.ui.CirclesMainUiController">
+
+    <fx:include fx:id="circlesExplorer" source="CirclesExplorer.fxml" />
+    <fx:include fx:id="slidingMenu" prefHeight="${mainPane.height}" source="SlidingMenu.fxml" />
+    <Button fx:id="closeButton" />
+
+</Pane>

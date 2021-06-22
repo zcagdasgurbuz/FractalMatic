@@ -1,0 +1,2 @@
+JAVA_VERSION="11.0.11"
+MODULES="java.base java.logging java.xml java.datatransfer java.prefs java.desktop javafx.base jdk.unsupported javafx.graphics javafx.controls com.jfoenix java.scripting javafx.fxml fractalmatic"
