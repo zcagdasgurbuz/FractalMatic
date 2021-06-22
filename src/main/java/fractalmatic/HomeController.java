@@ -6,7 +6,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 
 /**
- * Controller of the home screen
+ * Controller of the home screen/menu
  */
 public class HomeController {
 
