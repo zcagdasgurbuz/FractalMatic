@@ -20,7 +20,7 @@ As you see, each fractal is completely different from others, it's because you c
 
 #### Animation
 
-You can also animate some of these parameters, to be exact, everything below and including the start angle in the configuration menu.  Animation is basically an oscillation, and you can define amplitude and speed values.
+You can also animate some of these parameters, to be exact, everything below and including the start angle in the configuration menu.  Animation is basically an oscillation, and you can define amplitude and speed values. Animation performance depends on the system performance, and frame rate might drop significantly with large numbers of circles. You might want to limit the maximum number of circles for the animation to prevent FractalMatic from freezing.
 
 <img src="screenshots/ex_anim_menu.jpg" width="350"> 
 
@@ -29,7 +29,7 @@ You can also animate some of these parameters, to be exact, everything below and
 
 #### Randomizer
 
-Randomizer is a fun tool. You choose what to randomize and let the randomizer create a configuration for you, including animation. The keyboard shortcut is **CTRL + R** Randomizer will generate configuration within the specified circles limit.
+Randomizer is a fun tool. You choose what to randomize and let the randomizer create a configuration for you, including animation. The keyboard shortcut is **CTRL + R**. Note that the randomizer generates a configuration within the specified number of circles range. If the number of circles is too high, it might take a second fractal to show up. You might limit the maximum limits based on your system performance in randomizer menu.
 
 <img src="screenshots/ex_randomizer_menu.jpg" width="700">
 
