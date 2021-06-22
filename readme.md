@@ -2,6 +2,8 @@
 This app is a simple 2d fractal generator that uses JavaFx framework.
 Fractalmatic has only one type of fractal at the moment, but the plan is to add more types in the future.
 
+Download prebuild executable
+
 ## Circles Fractal
 
 The idea is super simple; the fractal starts with drawing the main/parent circle, then its evenly separated children - circles smaller than the parent circle- are drawn around the main/parent circle, and this process repeats for every child circle -the child becomes main it gets its children. Even though this process is very simple, the results are amazing. Here are some screenshots,
@@ -52,7 +54,6 @@ Build by using Maven
 
 ............................................................
 
-### Short term plans
--Fixing the bug in animation behavior in an operating system in Turkish, which is probably caused by some String.toLowercase then		 String.contains calls that are used for element lookups.
+### Download
 
--Standalone executable build
+<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic.zip?raw=true">For Windows</a>
