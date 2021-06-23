@@ -55,7 +55,7 @@ After creating interesting fractals by Randomizer or setting parameters manually
 
 #### Drag / Zoom
 
-You also can drag the fractal around and zoom in. **Double-click** will reset the position and the zoom.
+You also use your mouse to drag the fractal around and zoom in. **Double-click** will reset the position and the zoom.
 
 ---
 <p id="download"></p>  
