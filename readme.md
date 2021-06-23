@@ -60,7 +60,7 @@ To run FractalMatic, extract the zip, go to /bin folder and then, run the launch
 
 Windows might warn you about running the batch file, you need click "More options" on the warning dialog, then click "Run anyway". 
 
-<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic.zip?raw=true">Download for Windows</a>
+<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic-1.0.zip?raw=true">Download for Windows</a>
 
 <a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/JAR/FractalMatic-1.0.jar?raw=true">Download JAR </a>, requires JRE, multi-platform
 

@@ -21,7 +21,8 @@
             <artifactId>javafx-fxml</artifactId>
             <version>11</version>
         </dependency>
-        <dependency>
+        <!--no need below part for windows built -->
+       <!-- <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics </artifactId>
             <version>11</version>
@@ -38,7 +39,8 @@
             <artifactId>javafx-graphics </artifactId>
             <version>11</version>
             <classifier>mac</classifier>
-        </dependency>
+        </dependency>-->
+        <!--no need above part for windows built -->
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
@@ -83,7 +85,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>fractalmatic.App</mainClass>
+                    <mainClass>fractalmatic.AppLauncher</mainClass>
                     <launcher>launch</launcher>
                     <compress>2</compress>
                     <jlinkZipName>fractalMatic</jlinkZipName>
