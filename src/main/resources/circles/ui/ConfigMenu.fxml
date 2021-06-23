@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1"
+<ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="300.0" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="circles.ui.ConfigMenuController">
 
     <content>

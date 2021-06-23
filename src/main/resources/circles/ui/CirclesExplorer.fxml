@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.canvas.Canvas?>
-<Pane fx:id="explorer" xmlns="http://javafx.com/javafx/11.0.1"
+<Pane fx:id="explorer" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="circles.ui.CirclesExplorerController">
     <children>

@@ -62,3 +62,6 @@ Windows might warn you about running the batch file, you need click "More option
 
 <a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic.zip?raw=true">Download for Windows</a>
 
+<a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/JAR/FractalMatic-1.0.jar?raw=true">Download JAR </a>, requires JRE, multi-platform
+
+

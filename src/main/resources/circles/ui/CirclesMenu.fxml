@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<VBox spacing="5.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="circles.ui.CirclesMenuController">
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<VBox spacing="5.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="circles.ui.CirclesMenuController">
     <children>
-        <fx:include fx:id="circlesInfoDisplay" minHeight="-Infinity" source="CirclesInfoDisplay.fxml" VBox.vgrow="ALWAYS" />
-        <Region VBox.vgrow="ALWAYS" />
+        <fx:include fx:id="circlesInfoDisplay" minHeight="-Infinity" source="CirclesInfoDisplay.fxml"
+                    VBox.vgrow="ALWAYS"/>
+        <Region VBox.vgrow="ALWAYS"/>
         <Accordion>
             <panes>
                 <TitledPane animated="false" prefWidth="300.0" text="Fractal Configuration">
                     <content>
-                        <fx:include fx:id="configMenu" source="ConfigMenu.fxml" />
+                        <fx:include fx:id="configMenu" source="ConfigMenu.fxml"/>
                     </content>
                 </TitledPane>
                 <TitledPane animated="false" text="Animation - Oscillation">
                     <content>
-                        <fx:include fx:id="animationMenu" source="AnimationMenu.fxml" />
+                        <fx:include fx:id="animationMenu" source="AnimationMenu.fxml"/>
                     </content>
                 </TitledPane>
                 <TitledPane animated="false" text="Save/Load, Randomizer, Limits">
                     <content>
-                        <fx:include fx:id="saveLoadMenu" source="SaveLoadMenu.fxml" />
+                        <fx:include fx:id="saveLoadMenu" source="SaveLoadMenu.fxml"/>
                     </content>
                 </TitledPane>
             </panes>

@@ -9,8 +9,8 @@
 <!--translateX="-305"  defaultDrawerSize="300.0"-->
 
 <StackPane fx:id="slidingMenu" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" prefWidth="300.0" translateX="-305" xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="circles.ui.SlidingMenuController">
+           minWidth="-Infinity" prefWidth="300.0" translateX="-305" xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml" fx:controller="circles.ui.SlidingMenuController">
     <children>
         <fx:include fx:id="circlesMenu" source="CirclesMenu.fxml"/>
         <JFXHamburger fx:id="hamburgerMenuButton" accessibleRole="BUTTON" alignment="TOP_RIGHT" fillWidth="false"

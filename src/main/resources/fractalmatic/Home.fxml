@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="homeWindow" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="fractalmatic.HomeController">
+<StackPane fx:id="homeWindow" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml/" fx:controller="fractalmatic.HomeController">
     <children>
         <VBox alignment="CENTER" fillWidth="false" minHeight="300.0" minWidth="300.0" prefWidth="200.0" spacing="10.0">
             <children>
