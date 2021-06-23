@@ -18,30 +18,52 @@ import java.util.Map;
  */
 public class ConfigMenuController {
 
+    /** The fractal color final check box. */
     public CheckBox fractalColorFinalCheckBox;
+    /** The line width final check box. */
     public CheckBox lineWidthFinalCheckBox;
+    /** The opacity final check box. */
     public CheckBox opacityFinalCheckBox;
+    /** The background color picker. */
     public ColorPicker backgroundColorPicker;
+    /** The fractal color picker. */
     public ColorPicker fractalColorPicker;
+    /** The fractal final color picker. */
     public ColorPicker fractalFinalColorPicker;
+    /** The child count spinner. */
     public Spinner<Integer> childCountSpinner;
+    /** The recursions spinner. */
     public Spinner<Integer> recursionsSpinner;
+    /** The start angle slider. */
     public Slider startAngleSlider;
+    /** The initial radius slider. */
     public Slider initialRadiusSlider;
+    /** The size ratio slider. */
     public Slider sizeRatioSlider;
+    /** The line width slider. */
     public Slider lineWidthSlider;
+    /** The line width final slider. */
     public Slider lineWidthFinalSlider;
+    /** The opacity slider. */
     public Slider opacitySlider;
+    /** The opacity final slider. */
     public Slider opacityFinalSlider;
+    /** The start angle text. */
     public Text startAngleText;
+    /** The initial radius text. */
     public Text initialRadiusText;
+    /** The size ratio text. */
     public Text sizeRatioText;
+    /** The line width text. */
     public Text lineWidthText;
+    /** The line width final text. */
     public Text lineWidthFinalText;
+    /** The opacity text. */
     public Text opacityText;
+    /** The opacity final text. */
     public Text opacityFinalText;
 
-
+    /** The Property manager. */
     PropertyManager propertyManager = PropertyManager.INSTANCE;
 
     /**

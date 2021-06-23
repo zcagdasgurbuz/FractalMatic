@@ -7,13 +7,9 @@ import javafx.beans.property.SimpleDoubleProperty;
  */
 public class SimpleRangedDoubleProperty extends SimpleDoubleProperty {
 
-    /**
-     * The minimum limit of the range
-     */
+    /** The minimum limit of the range */
     private double min;
-    /**
-     * The maximum limit of the range
-     */
+    /** The maximum limit of the range */
     private double max;
 
     /**

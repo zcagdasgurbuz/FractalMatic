@@ -22,18 +22,30 @@ import java.io.IOException;
  */
 public class SaveLoadMenuController {
 
+    /** The config name field -for saving. */
     public TextField configNameField;
+    /** The config names list view -saved configurations list */
     public ListView<CirclesConfiguration> configNamesListView;
+    /** The save button. */
     public Button saveButton;
+    /** The load button. */
     public Button loadButton;
+    /** The remove button. */
     public Button removeButton;
+    /** The randomize button. */
     public Button randomizeButton;
+    /** The randomizer settings button. */
     public Button randomizerSettingsButton;
+    /** The configuration - max number of circles limit text field. */
     public TextField configMaxCirclesLimitTextField;
+    /** The animation - max number circles limit text field. */
     public TextField animationMaxCirclesLimitTextField;
+    /** The start with last config check box. */
     public CheckBox startLastConfigCheckBox;
 
+    /** The randomizer setting's container. */
     private HBox randomizer;
+    /** The randomizer settings popup. */
     private Popup randomizerSettingsPopup;
 
 
@@ -43,9 +55,7 @@ public class SaveLoadMenuController {
     @FXML
     public void initialize() {
         //config name text field
-        configNameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            saveButton.setDisable(newValue.length() <= 0);
-        });
+        configNameField.textProperty().addListener((observable, oldValue, newValue) -> saveButton.setDisable(newValue.length() <= 0));
         configNamesListView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() >= 0) {
                 loadButton.setDisable(false);
@@ -90,7 +100,7 @@ public class SaveLoadMenuController {
      * Handles the save button function
      */
     @FXML
-    public void saveButtonAction(){
+    public void saveButtonAction() {
         ConfigurationManager.INSTANCE.requestSave(saveButton, configNameField.textProperty().get());
         configNameField.textProperty().set("");
     }
@@ -99,7 +109,7 @@ public class SaveLoadMenuController {
      * Handles the load button function
      */
     @FXML
-    public void loadButtonAction(){
+    public void loadButtonAction() {
         ConfigurationManager.INSTANCE.requestLoad(configNamesListView.getSelectionModel().getSelectedItem());
     }
 
@@ -107,7 +117,7 @@ public class SaveLoadMenuController {
      * Handles the remove button function
      */
     @FXML
-    public void removeButtonAction(){
+    public void removeButtonAction() {
         ConfigurationManager.INSTANCE.requestRemove(configNamesListView.getSelectionModel().getSelectedItem());
     }
 
@@ -115,7 +125,7 @@ public class SaveLoadMenuController {
      * Handles the randomizer button function
      */
     @FXML
-    public void randomizeButtonAction(){
+    public void randomizeButtonAction() {
         ConfigurationManager.INSTANCE.randomizeAndSet();
     }
 
@@ -123,7 +133,7 @@ public class SaveLoadMenuController {
      * Handles the randomizer settings button function
      */
     @FXML
-    public void randomizerSettingsButtonAction(){
+    public void randomizerSettingsButtonAction() {
         showRandomizerSettings();
     }
 

@@ -16,12 +16,18 @@ import javafx.util.Duration;
  */
 public class SlidingMenuController {
 
+    /** The sliding menu container. */
     public StackPane slidingMenu;
+    /** The hamburger menu button. */
     public JFXHamburger hamburgerMenuButton;
+    /** The menu content. */
     public VBox circlesMenu;
 
+    /** Whether the menu open/visible. */
     private boolean isOpen;
+    /** The timeline of sliding animation. */
     private Timeline timeline;
+    /** The hamburger menu button animation */
     private HamburgerBackArrowBasicTransition burgerTask;
     //private HamburgerSlideCloseTransition burgerTask; // different animation
 

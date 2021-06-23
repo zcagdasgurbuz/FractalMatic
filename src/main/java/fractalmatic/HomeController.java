@@ -10,8 +10,11 @@ import javafx.scene.layout.StackPane;
  */
 public class HomeController {
 
+    /** The fractal list. */
     public ListView<String> fractalList;
+    /** The start button. */
     public Button startButton;
+    /** The home window. */
     public StackPane homeWindow;
 
     /**

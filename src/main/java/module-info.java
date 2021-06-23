@@ -10,10 +10,10 @@ module fractalmatic {
     opens circles.ui to javafx.fxml;
     /*opens circles.util to javafx.fxml;*/
     exports fractalmatic;
-    //exports circles.animation;
+    exports circles.animation;
     exports circles.calculation;
     exports circles.ui;
-    //exports circles.util;
+    exports circles.util;
 
 
 }

@@ -12,9 +12,13 @@ import java.util.List;
  */
 public class CirclesInfoDisplayController {
 
-    public Text errorMessage;
+    /** The number of drawn circles drawn circles text */
     public Text drawnCircles;
+    /** The error message text field */
+    public Text errorMessage;
+    /** The animation status text field */
     public Text animationStatus;
+    /** The animation error message text field */
     public Text animationErrorMessage;
 
     /**

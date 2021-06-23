@@ -1,6 +1,5 @@
 package circles.calculation;
 
-import javafx.animation.Interpolator;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,10 +15,14 @@ import java.util.Stack;
  */
 public class FractalGenerator {
 
-    private GraphicsContext graphicsContext;
-    private Pane explorer;
+    /** The graphics context to be used to draw */
+    private final GraphicsContext graphicsContext;
+    /** The explorer pane to be used to draw background */
+    private final Pane explorer;
+    /** Whether the rendering is active*/
     private boolean isRenderingActive;
-    private IntegerProperty drawnCircles;
+    /** The number of drawn circles prop -updates in every drawing*/
+    private final IntegerProperty drawnCircles;
 
     /**
      * Constructor..
@@ -79,12 +82,12 @@ public class FractalGenerator {
             double red, green, blue;
             //(endValue - startValue) * stepNumber / lastStepNumber + startValue;
             for (int idx = 0; idx < maxRecursions; idx++) {
-                red = ((((Color) fractalFinalColor).getRed() - ((Color) fractalColor).getRed())) *
-                        (idx / (double) (maxRecursions - 1)) + ((Color) fractalColor).getRed();
-                green = ((((Color) fractalFinalColor).getGreen() - ((Color) fractalColor).getGreen())) *
-                        (idx / (double) (maxRecursions - 1)) + ((Color) fractalColor).getGreen();
-                blue = ((((Color) fractalFinalColor).getBlue() - ((Color) fractalColor).getBlue())) *
-                        (idx / (double) (maxRecursions - 1)) + ((Color) fractalColor).getBlue();
+                red = ((fractalFinalColor.getRed() - fractalColor.getRed())) *
+                        (idx / (double) (maxRecursions - 1)) + fractalColor.getRed();
+                green = ((fractalFinalColor.getGreen() - fractalColor.getGreen())) *
+                        (idx / (double) (maxRecursions - 1)) + fractalColor.getGreen();
+                blue = ((fractalFinalColor.getBlue() - fractalColor.getBlue())) *
+                        (idx / (double) (maxRecursions - 1)) + fractalColor.getBlue();
                 colors.put(idx, new Color(red, green, blue, 1.0));
             }
         }

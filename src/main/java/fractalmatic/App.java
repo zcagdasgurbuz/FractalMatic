@@ -14,11 +14,11 @@ import java.io.IOException;
 /**
  * JavaFX App class, application starts here.
  */
-public class App<setMaximizable> extends Application {
+public class App extends Application {
 
-    private static Scene scene;
+    /** The decorator - fancy window. */
     private static JFXDecorator decorator;
-    private static Parent content;
+    /** The name of the fxml file that is currently shown. */
     private static String currentFxml;
 
     /**
@@ -36,11 +36,11 @@ public class App<setMaximizable> extends Application {
         stage.setResizable(false); // no resizing, including maximize and full screen button
         //load first menu
         currentFxml = "Home.fxml";
-        content = FXMLLoader.load(getClass().getResource("/fractalmatic/Home.fxml"));
+        Parent content = FXMLLoader.load(getClass().getResource("/fractalmatic/Home.fxml"));
         //change the stage style with jfoenix
-        decorator = new JFXDecorator(stage,content);
+        decorator = new JFXDecorator(stage, content);
         decorator.setCustomMaximize(false);
-        scene = new Scene(decorator);
+        Scene scene = new Scene(decorator);
         //fonts getting added, not sure this would work without internet connection after bundling the app
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;500;700;800&display=swap");
         // style sheet needs to be attached again, because it seems that JFXDecorator removes style sheet
@@ -67,15 +67,6 @@ public class App<setMaximizable> extends Application {
         if(!isMaximized && !isFullScreen){
             decorator.getScene().getWindow().sizeToScene();
         }
-    }
-
-    /**
-     * This method sets the maximized state of the window
-     *
-     * @param maximized new maximized state
-     */
-    public static void setMaximized(boolean maximized){
-        decorator.setMaximized(maximized);
     }
 
     /**

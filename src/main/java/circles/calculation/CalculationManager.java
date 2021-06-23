@@ -9,10 +9,14 @@ import javafx.scene.paint.Color;
  * This singleton class handles the connection between other managers and explorer via fractal generator.
  */
 public enum CalculationManager {
+    /** Instance calculation manager */
     INSTANCE; //singleton manager
 
+    /** The fractal generator */
     private FractalGenerator generator;
+    /** The explorer -ui */
     private Pane explorer;
+    /** The graphics context -to be used for drawing */
     private GraphicsContext graphicsContext;
 
     /**

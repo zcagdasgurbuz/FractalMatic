@@ -19,9 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class UiUtil {
 
-    /**
-     * The singleton instance.
-     */
+    /** The singleton instance */
     public static final UiUtil tools = new UiUtil();
 
     /**

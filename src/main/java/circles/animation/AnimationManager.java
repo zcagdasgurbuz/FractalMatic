@@ -108,7 +108,7 @@ public enum AnimationManager {
                 PropertyManager.INSTANCE.removeListeners();
                 PropertyManager.INSTANCE.addListeners(animationCheckListener);
             } else {
-                PropertyManager.INSTANCE.removeListeners();
+                PropertyManager.INSTANCE.removeListeners(animationCheckListener);
                 PropertyManager.INSTANCE.addListeners();
             }
         });
@@ -285,7 +285,7 @@ public enum AnimationManager {
      * @param animatable the animatable that its amplitude is to be changed
      * @param newValue   the new amplitude value
      */
-    public void requestAmplitudeChange(Animatable animatable, Double newValue) {
+    public void requestAmplitudeChange(Animatable animatable, double newValue) {
         animatable.getAnimationBehavior().setRange(newValue * 2);
         checkConditions();
     }
@@ -295,10 +295,9 @@ public enum AnimationManager {
      *
      * @param animatable the animatable
      * @param newValue   the new value
-     * @return the boolean
      */
-    public boolean requestSpeedChange(Animatable animatable, Double newValue) {
-        return false;
+    public void requestSpeedChange(Animatable animatable, double newValue) {
+        animatable.getAnimationBehavior().setSpeed(newValue);
     }
 
     /**
@@ -488,10 +487,9 @@ public enum AnimationManager {
         amplitudeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 requestAmplitudeChange(animatable, newValue.doubleValue()));
 
-        speedSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            //there is no need to control value since speed does not affects the number of circles
-            animatable.getAnimationBehavior().setSpeed(newValue.doubleValue());
-        });
+        speedSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+            requestSpeedChange(animatable, newValue.doubleValue())
+        );
 
         animationStartStopButton.setOnAction(event -> {
             animatable.getAnimationBehavior().setRange(amplitudeSlider.getValue() * 2);

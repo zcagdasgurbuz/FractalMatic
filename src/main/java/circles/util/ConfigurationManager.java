@@ -23,52 +23,29 @@ import java.util.Random;
  * Configuration manager, handles configuration.
  */
 public enum ConfigurationManager {
-    /**
-     * Instance of singleton configuration manager.
-     */
+    /** Instance of singleton configuration manager. */
     INSTANCE;
 
-    /**
-     * The Config file name.
-     */
+    /** The config file name. */
     final String CONFIG_FILE_NAME = "savedConfigs.fm";
-    /**
-     * The Last saved file name.
-     */
+    /** The last saved file name. */
     final String LAST_SAVED_FILE_NAME = "lastSaved.fm";
-    /**
-     * The debug info.
-     */
+    /** The debug info. */
     final boolean VERBOSE = false;
-
-    /**
-     * The try limit of randomizer - if randomizer fails to generate an acceptable config, tries again.
-     */
+    /** The try limit of randomizer - if randomizer fails to generate an acceptable config, tries again. */
     final int RANDOM_TRY_LIMIT = 1000;
 
-    /**
-     * The Random.
-     */
+    /** The random number generator. */
     private final Random random = new Random();
-    /**
-     * The List view.
-     */
+    /** The list view of saved configurations. */
     private ListView<CirclesConfiguration> listView;
-    /**
-     * The Configurations.
-     */
+    /** The saved configurations. */
     private ObservableList<CirclesConfiguration> configurations;
-    /**
-     * The Randomizer check boxes.
-     */
+    /** The randomizer check boxes. -to see what's selected*/
     private HashMap<String, CheckBox> randomizerCheckBoxes;
-    /**
-     * The Start last config check box.
-     */
+    /** The start with last config check box. */
     private CheckBox startLastConfigCheckBox;
-    /**
-     * The Last saved.
-     */
+    /** The last configuration before closing saved. */
     private CirclesConfiguration lastSaved;
 
 
@@ -119,7 +96,7 @@ public enum ConfigurationManager {
 
         CirclesConfiguration current = new CirclesConfiguration();
         current.setName(name);
-        boolean okToSave = false;
+        boolean okToSave;
         //prompt user if exists
         if (configurations.contains(current)) {
             okToSave = UiUtil.tools.alertYesOrNo(name + " is already exists, do you want to overwrite it?");

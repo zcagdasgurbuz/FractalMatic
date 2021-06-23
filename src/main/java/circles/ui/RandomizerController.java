@@ -12,29 +12,53 @@ import java.util.HashMap;
  * Randomizer's settings controller
  */
 public class RandomizerController {
+    /** The background color check box. */
     public CheckBox backgroundColorCheckBox;
+    /** The fractal color check box. */
     public CheckBox fractalColorCheckBox;
+    /** The fractal final color check box. */
     public CheckBox fractalFinalColorCheckBox;
+    /** The child count check box. */
     public CheckBox childCountCheckBox;
+    /** The recursion depth check box. */
     public CheckBox recursionDepthCheckBox;
+    /** The start angle check box. */
     public CheckBox startAngleCheckBox;
+    /** The initial radius check box. */
     public CheckBox initialRadiusCheckBox;
+    /** The size ratio check box. */
     public CheckBox sizeRatioCheckBox;
+    /** The line width check box. */
     public CheckBox lineWidthCheckBox;
+    /** The line width final check box. */
     public CheckBox lineWidthFinalCheckBox;
+    /** The opacity check box. */
     public CheckBox opacityCheckBox;
+    /** The opacity final check box. */
     public CheckBox opacityFinalCheckBox;
+    /** The start angle animation check box. */
     public CheckBox startAngleAnimationCheckBox;
+    /** The initial radius animation check box. */
     public CheckBox initialRadiusAnimationCheckBox;
+    /** The size ratio animation check box. */
     public CheckBox sizeRatioAnimationCheckBox;
+    /** The line width animation check box. */
     public CheckBox lineWidthAnimationCheckBox;
+    /** The line width final animation check box. */
     public CheckBox lineWidthFinalAnimationCheckBox;
+    /** The opacity animation check box. */
     public CheckBox opacityAnimationCheckBox;
+    /** The opacity final animation check box. */
     public CheckBox opacityFinalAnimationCheckBox;
+    /** The main box. */
     public HBox mainBox;
+    /** The add all configs button. */
     public Button addAllConfigsButton;
+    /** The remove all configs button. */
     public Button removeAllConfigsButton;
+    /** The add all animations button. */
     public Button addAllAnimationsButton;
+    /** The remove all animations button. */
     public Button removeAllAnimationsButton;
 
     /**

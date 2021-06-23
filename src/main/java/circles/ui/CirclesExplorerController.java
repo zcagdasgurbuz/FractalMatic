@@ -1,12 +1,9 @@
 package circles.ui;
 
 import circles.calculation.CalculationManager;
-import circles.calculation.PropertyManager;
 import circles.util.SimpleRangedDoubleProperty;
-import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,16 +18,27 @@ import javafx.scene.layout.Pane;
 public class CirclesExplorerController {
 
 
+    /** The x coordinate prop of canvas */
     private final DoubleProperty canvasX;
+    /** The y coordinate prop of canvas */
     private final DoubleProperty canvasY;
+    /** The zoom prop of canvas */
     private final DoubleProperty zoom;
+    /** The explorer -background/container */
     public Pane explorer;
+    /** The canvas where drawing happens. */
     public Canvas canvas;
+    /** The captured x coordinate when mouse pressed. */
     private Double capturedX;
+    /** The captured y coordinate when mouse pressed */
     private Double capturedY;
-    private CalculationManager calculationManager = CalculationManager.INSTANCE;
-    
-    public CirclesExplorerController(){
+    /** The calculation manager */
+    CalculationManager calculationManager = CalculationManager.INSTANCE;
+
+    /**
+     * Instantiates a new Circles explorer controller.
+     */
+    public CirclesExplorerController() {
         canvasX = new SimpleDoubleProperty();
         canvasY = new SimpleDoubleProperty();
         capturedX = 0.0;
@@ -65,52 +73,43 @@ public class CirclesExplorerController {
     }
 
     /**
-     *  Assigns the necessary mouse listeners for mouse dragging
+     * Assigns the necessary mouse listeners for mouse dragging
      */
     private void activateMouseDragging() {
-        explorer.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                capturedX = event.getX() / zoom.get() - canvasX.get();
-                capturedY = event.getY() / zoom.get() - canvasY.get();
+        explorer.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            capturedX = event.getX() / zoom.get() - canvasX.get();
+            capturedY = event.getY() / zoom.get() - canvasY.get();
 
-            }
         });
-        explorer.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                canvasX.set(event.getX() / zoom.get() - capturedX);
-                canvasY.set(event.getY() / zoom.get() - capturedY);
-            }
+        explorer.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
+            canvasX.set(event.getX() / zoom.get() - capturedX);
+            canvasY.set(event.getY() / zoom.get() - capturedY);
         });
-        explorer.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getClickCount() == 2) {
-                    resetCenterPoint();
-                }
+        explorer.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if (mouseEvent.getClickCount() == 2) {
+                resetCenterPoint();
+            }
 
-            }
         });
     }
 
     /**
-     *  Assigns the necessary mouse listeners for zooming
+     * Assigns the necessary mouse listeners for zooming
      */
     private void activateZoomByScrolling() {
-        explorer.addEventHandler(ScrollEvent.SCROLL, new EventHandler<ScrollEvent>() {
-            @Override
-            public void handle(ScrollEvent scrollEvent) {
-                double zoomValue = zoom.get();
-                if (scrollEvent.getDeltaY() < 0) {
-                    zoom.set(zoomValue + 0.05);
-                } else {
-                    zoom.set(zoomValue - 0.05);
-                }
+        explorer.addEventHandler(ScrollEvent.SCROLL, scrollEvent -> {
+            double zoomValue = zoom.get();
+            if (scrollEvent.getDeltaY() < 0) {
+                zoom.set(zoomValue + 0.05);
+            } else {
+                zoom.set(zoomValue - 0.05);
             }
         });
     }
 
 
     /**
-     *  Retrieves the graphics context of the canvas
+     * Retrieves the graphics context of the canvas
      *
      * @return the graphics context of the canvas
      */
@@ -119,7 +118,7 @@ public class CirclesExplorerController {
     }
 
     /**
-     *  Retrieves the pane behind canvas, which is designed to act as a background
+     * Retrieves the pane behind canvas, which is designed to act as a background
      *
      * @return the explorer pane, -background
      */

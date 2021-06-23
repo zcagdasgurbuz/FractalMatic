@@ -41,7 +41,7 @@ public interface Animatable extends Comparable<Animatable>{
     /**
      * This method retrieves the current animator of the animatable, the animator can be thought of as the subject in observer pattern
      *
-     * @return
+     * @return the animator
      */
     Animator getAnimator();
 
