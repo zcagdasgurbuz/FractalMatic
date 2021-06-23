@@ -22,7 +22,7 @@
             <version>11</version>
         </dependency>
         <!--no need below part for windows build -->
-        <!-- <dependency>
+<!--         <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
              <version>11</version>

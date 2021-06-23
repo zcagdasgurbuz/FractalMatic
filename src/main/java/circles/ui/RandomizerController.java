@@ -88,6 +88,8 @@ public class RandomizerController {
         allCheckBoxes.put("opacityFinalAnimationCheckBox", opacityFinalAnimationCheckBox);
 
         ConfigurationManager.INSTANCE.setRandomizerCheckBoxes(allCheckBoxes);
+        addAllAnimationsButtonAction();
+        addAllConfigsButtonAction();
     }
 
     /**

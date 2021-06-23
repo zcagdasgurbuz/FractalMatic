@@ -98,7 +98,9 @@ public class CirclesMainUiController {
         PropertyManager.INSTANCE.drawRequest();
         Platform.runLater(() -> {
             circlesExplorerController.resetCenterPoint();
+            mainPane.requestFocus();
         });
+
     }
 
 }
