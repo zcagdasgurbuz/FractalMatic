@@ -63,11 +63,11 @@ You also use your mouse to drag the fractal around and zoom in. **Double-click**
 ### Download stand-alone packages
 
 <a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/win/fractalMatic-1.0.zip?raw=true">Download for Windows</a>  
-To run FractalMatic in Windows, extract the zip, go to /bin folder and then, run the launch.bat or launch.sh if you can are able to run shell scripts.  
+To run FractalMatic in Windows, extract the zip, go to /bin folder and then, run the launch.bat or launch.sh if you are able to run shell scripts.  
 *Windows might warn you about running the batch file, you need click "More options" on the warning dialog, then click "Run anyway".
 
 <a id="raw-url" href="https://github.com/zcagdasgurbuz/FractalMatic/blob/master/builds/JAR/FractalMatic-1.0.jar?raw=true">Download JAR </a>  
-To run .Jar version, you need to have JRE in your device.However, this will work in Windows, Linux and Mac as long as you have JRE installed.
+To run .Jar version, you need to have JRE in your device. However, this will work in Windows, Linux and Mac as long as you have JRE installed.
 
 ---
 
