@@ -2,7 +2,8 @@
 This app is a simple 2d fractal generator that uses JavaFx framework.
 Fractalmatic has only one type of fractal at the moment, but the plan is to add more types in the future.
 
-<a href="#download">Download stand-alone package </a>
+<a href="#download" style="font-size: 20px;">Download stand-alone package </a>
+
 
 ---
 
