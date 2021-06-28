@@ -14,30 +14,30 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>11</version>
+            <version>15.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>11</version>
+            <version>15.0.1</version>
         </dependency>
         <!--no need below part for windows build -->
-        <!-- <dependency>
+<!--         <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
-             <version>11</version>
+             <version>15.0.1</version>
              <classifier>win</classifier>
          </dependency>
          <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
-             <version>11</version>
+             <version>15.0.1</version>
              <classifier>linux</classifier>
          </dependency>
          <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
-             <version>11</version>
+             <version>15.0.1</version>
              <classifier>mac</classifier>
          </dependency>-->
         <!--no need above part for windows build -->
