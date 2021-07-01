@@ -113,7 +113,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Slider fx:id="lineWidthSlider" blockIncrement="0.1" majorTickUnit="1.0" max="10"
+                                <Slider fx:id="lineWidthSlider" blockIncrement="0.01" majorTickUnit="1.0" max="10"
                                         min="0.1" minorTickCount="1" value="1" HBox.hgrow="ALWAYS"/>
                                 <Text fx:id="lineWidthText" strokeType="OUTSIDE" strokeWidth="0.0"
                                       styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
@@ -123,7 +123,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Slider fx:id="lineWidthFinalSlider" blockIncrement="0.1" majorTickUnit="1.0"
+                                <Slider fx:id="lineWidthFinalSlider" blockIncrement="0.01" majorTickUnit="1.0"
                                         managed="${lineWidthFinalCheckBox.selected}" max="10" min="0.1"
                                         minorTickCount="1" value="1" visible="${lineWidthFinalCheckBox.selected}"
                                         HBox.hgrow="ALWAYS"/>
@@ -147,7 +147,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Slider fx:id="opacitySlider" blockIncrement="0.05" majorTickUnit="1.0" max="1"
+                                <Slider fx:id="opacitySlider" blockIncrement="0.01" majorTickUnit="1.0" max="1"
                                         min="0.01" minorTickCount="1" value="1" HBox.hgrow="ALWAYS"/>
                                 <Text fx:id="opacityText" strokeType="OUTSIDE" strokeWidth="0.0"
                                       styleClass="sliderValueText" text="Text" textAlignment="RIGHT"
@@ -157,7 +157,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Slider fx:id="opacityFinalSlider" blockIncrement="0.05" majorTickUnit="1.0"
+                                <Slider fx:id="opacityFinalSlider" blockIncrement="0.01" majorTickUnit="1.0"
                                         managed="${opacityFinalCheckBox.selected}" max="1" min="0.01" value="1"
                                         visible="${opacityFinalCheckBox.selected}" HBox.hgrow="ALWAYS"/>
                                 <Text fx:id="opacityFinalText" managed="${opacityFinalCheckBox.selected}"

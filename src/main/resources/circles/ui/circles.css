@@ -23,7 +23,8 @@
     );
     -fx-focused-mark-color: -fx-focused-text-base-color;
     -fx-font-family: "JetBrains Mono";
-
+    -drop-shadow-darken: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0.5, 0.0, 0.0);
+    -drop-shadow-lighten: dropshadow(gaussian,-fx-accent,8,0.3,0,0)
 }
 
 
@@ -45,6 +46,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 12px;
     -fx-text-fill: -fx-light-text-color;
+    -fx-effect: -drop-shadow-darken;
 }
 
 /* ------------------------------------------------------- */
@@ -154,14 +156,15 @@
     -fx-pref-height: 50px;
     -fx-spacing: 5px;
     -fx-cursor: hand;
+    -fx-effect: -drop-shadow-lighten;
 }
 
 .jfx-hamburger > StackPane {
-
     -fx-pref-width: 30px;
     -fx-pref-height: 4px;
-    -fx-background-color: -fx-base;
+    -fx-background-color:  -fx-base;
     -fx-background-radius: 3px;
+    /*-fx-effect: dropshadow(gaussian,-fx-accent,2,2,0,0);*/
 }
 
 
@@ -170,6 +173,7 @@
     -fx-font-size: 16;
     -fx-translate-y: -5px;
     -fx-text-alignment: right;
+    -fx-effect: -drop-shadow-darken;
 }
 
 /* ------------------------------------------------------- */
@@ -214,6 +218,7 @@
 .infoText {
     -fx-fill: -fx-light-text-color;
     -fx-font-size: 14px;
+    -fx-effect: -drop-shadow-darken;
 }
 
 .infoErrorText {
@@ -253,4 +258,9 @@
     -fx-max-width: 25px;
     -fx-max-height: 25px;
     -fx-background-color: -fx-base;
+    -fx-effect: -drop-shadow-lighten;
+}
+
+.check-box .text {
+    -fx-effect: -drop-shadow-darken;
 }

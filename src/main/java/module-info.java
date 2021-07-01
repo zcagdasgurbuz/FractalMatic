@@ -1,5 +1,4 @@
 module fractalmatic {
-
     requires javafx.controls;
     requires javafx.fxml;
     requires com.jfoenix;

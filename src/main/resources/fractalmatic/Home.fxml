@@ -3,13 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="homeWindow" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx"
+<?import javafx.scene.image.ImageView?>
+<StackPane fx:id="homeWindow" prefHeight="600" prefWidth="1024" xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml/" fx:controller="fractalmatic.HomeController">
     <children>
         <VBox alignment="CENTER" fillWidth="false" minHeight="300.0" minWidth="300.0" prefWidth="200.0" spacing="10.0">
             <children>
                 <Label text="Choose Fractal Generator"/>
-                <ListView fx:id="fractalList" prefHeight="50.0" prefWidth="150.0"/>
+                <StackPane>
+                    <children>
+                        <ImageView fx:id="fractalLogo" managed="false"/>
+                        <ListView fx:id="fractalList" prefHeight="50.0" prefWidth="150.0"/>
+                    </children>
+                </StackPane>
                 <Button fx:id="startButton" onAction="#handleStartButton" text="Start"/>
             </children>
         </VBox>

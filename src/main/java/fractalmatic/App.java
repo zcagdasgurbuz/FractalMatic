@@ -1,5 +1,6 @@
 package fractalmatic;
 
+import circles.ui.CirclesMainUiController;
 import circles.util.ConfigurationManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * JavaFX App class, application starts here.
@@ -36,7 +38,7 @@ public class App extends Application {
         //stage/window settings
         App.stage = stage;
         stage.setTitle("FractalMatic");
-        stage.getIcons().add(new Image(getClass().getResource("/fractalmatic/icon.png").toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/fractalmatic/icon.png")).toExternalForm()));
         stage.setMinWidth(300); // min 300x300
         stage.setMinHeight(300);
         stage.setResizable(true);
@@ -45,13 +47,13 @@ public class App extends Application {
                 stage.setFullScreen(!stage.isFullScreen());
             }
         });
+        stage.fullScreenProperty().addListener((observable, oldValue, newValue) -> {
 
-        //stage.initStyle(StageStyle.UNDECORATED);
+        });
         //load first menu
         currentFxml = "Home.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fractalmatic/Home.fxml"));
         Parent content = fxmlLoader.load();
-
         scene = new Scene(content);
         //fonts getting added, not sure this would work without internet connection after bundling the app
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;500;700;800&display=swap");
@@ -71,6 +73,7 @@ public class App extends Application {
     public static void setRoot(String fxml) {
         String[] fullPath = fxml.split("/");
         currentFxml = fullPath[fullPath.length - 1];
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
         //set content
         scene.setRoot(loadFXML(fxml));
         if (!stage.isMaximized() && !stage.isFullScreen()) {
@@ -78,10 +81,11 @@ public class App extends Application {
         }
     }
 
+
     /**
      * This method reads the fxml file and returns
      *
-     * @param fxml the fxml file, including location and extension, to be read
+     * @param fxml        the fxml file, including location and extension, to be read
      * @return the component is read from the fxml file
      */
     private static Parent loadFXML(String fxml) {
@@ -89,10 +93,25 @@ public class App extends Application {
         Parent parent = new Pane();
         try {
             parent = fxmlLoader.load();
+            bindFullAndMaxBehaviors(fxmlLoader);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return parent;
+    }
+
+    /**
+     * Binds full screen and maximized behaviors.
+     *
+     * @param loader the loader of the resource to be used to get controller\
+     */
+    private static void bindFullAndMaxBehaviors(FXMLLoader loader) {
+        if (currentFxml.equals("CirclesMainUi.fxml")) {
+            CirclesMainUiController controller = loader.getController();
+            stage.fullScreenProperty().addListener((observable, oldValue, newValue) -> controller.resetFractalCenter());
+            stage.maximizedProperty().addListener(((observable, oldValue, newValue) -> controller.resetFractalCenter()));
+        }
+        //some other fractal behaviors
     }
 
     @Override

@@ -97,9 +97,7 @@ public enum AnimationManager {
                 PropertyManager.INSTANCE.drawRequest();
         };
 
-        animationCheckListener = (observable, oldValue, newValue) -> {
-            checkConditions();
-        };
+        animationCheckListener = (observable, oldValue, newValue) -> checkConditions();
 
         animator.frameCountProperty().addListener(animationListener);
 
@@ -125,11 +123,15 @@ public enum AnimationManager {
         String id = animatable.getId();
         slider.setMin(1);
         slider.setValue(10);
-        slider.setBlockIncrement(1);
+        slider.setBlockIncrement(0.01);
         switch (id) {
             case "Start Angle":
                 slider.setMax(999);
                 slider.setValue(90);
+                slider.setBlockIncrement(1.0);
+                slider.majorTickUnitProperty().set(1.0);
+                slider.minorTickCountProperty().set(0);
+                slider.snapToTicksProperty().set(true);
                 break;
             case "Initial Radius":
                 slider.setMax(100);
@@ -142,14 +144,12 @@ public enum AnimationManager {
                 slider.setMax(5);
                 slider.setMin(0.1);
                 slider.setValue(1);
-                slider.setBlockIncrement(0.1);
                 break;
             case "Opacity":
             case "Final Opacity":
                 slider.setMax(0.5);
                 slider.setMin(0.01);
                 slider.setValue(0.2);
-                slider.setBlockIncrement(0.05);
                 break;
         }
     }
@@ -461,7 +461,7 @@ public enum AnimationManager {
             animatable.getAnimationBehavior().setExponentialConstant(7.0);
         //
         speedSlider.setId(id + "_speedSlider");
-        speedSlider.setBlockIncrement(0.05);
+        speedSlider.setBlockIncrement(0.01);
         speedSlider.prefWidthProperty().bind(newBox.widthProperty().subtract(57.0));
         if (speedValue != null) {
             speedSlider.setValue(speedValue);

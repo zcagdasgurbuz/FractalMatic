@@ -189,9 +189,9 @@ public enum ConfigurationManager {
      * @return the default configuration
      */
     public CirclesConfiguration getDefault() {
-        return new CirclesConfiguration("default", Color.web("#FFBB55"), false, Color.web("#000000"),
-                Color.web("#000000"), 4, 5, 90, 100, 50, false,
-                1, 1, false, 1, 1, false,
+        return new CirclesConfiguration("default", Color.web("#CCE6FF"), true, Color.RED,
+                Color.BLACK, 4, 8, 90, 200.0, 48.9, true,
+                10.0, 0.5, false, 1, 1, false,
                 false, 1, 1,
                 false, 1, 1,
                 false, 1, 1,

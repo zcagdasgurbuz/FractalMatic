@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
 
 
 /**
@@ -31,7 +32,7 @@ public class CirclesMainUiController {
             "18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z";
 
 
-    /** The main pane that contain everyhing */
+    /** The main pane that contains everything */
     @FXML
     public Pane mainPane;
     /** The fractal explorer */
@@ -43,7 +44,7 @@ public class CirclesMainUiController {
     /** The close button */
     @FXML
     public Button closeButton;
-    /** The Circles explorer controller */
+    /** The circles explorer controller */
     @FXML
     CirclesExplorerController circlesExplorerController;
 
@@ -96,11 +97,14 @@ public class CirclesMainUiController {
 
         ConfigurationManager.INSTANCE.initializeConfigs();
         PropertyManager.INSTANCE.drawRequest();
-        Platform.runLater(() -> {
-            circlesExplorerController.resetCenterPoint();
-            mainPane.requestFocus();
-        });
-
+        Platform.runLater(() -> mainPane.requestFocus());
+        resetFractalCenter();
     }
 
+    /**
+     * Resets fractal center.
+     */
+    public void resetFractalCenter(){
+        Platform.runLater(()-> circlesExplorerController.resetCenterPoint());
+    }
 }

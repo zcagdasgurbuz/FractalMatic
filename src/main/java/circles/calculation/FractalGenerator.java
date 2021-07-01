@@ -232,4 +232,9 @@ public class FractalGenerator {
         return drawnCircles;
     }
 
+
+    public void centerFractal(){
+
+    }
+
 }
