@@ -28,8 +28,7 @@ public enum ConfigurationManager {
 
     /** The config file name. */
     final String CONFIG_FILE_NAME = "circlesSavedConfigs.fm";
-    /** The last saved file name. */
-    final String LAST_SAVED_FILE_NAME = "lastSaved.fm";
+    /** The last saved config name. */
     final String LAST_SAVED_CONFIG_NAME = "---last-saved-configuration-before-close---";
 
     /** The debug info. */

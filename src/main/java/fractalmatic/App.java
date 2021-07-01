@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
@@ -19,7 +20,9 @@ public class App extends Application {
 
     /** The name of the fxml file that is currently shown. */
     private static String currentFxml;
+    /** The scene. */
     static Scene scene;
+    /** The stage. */
     static Stage stage;
 
     /**
@@ -69,10 +72,10 @@ public class App extends Application {
         String[] fullPath = fxml.split("/");
         currentFxml = fullPath[fullPath.length - 1];
         //set content
-       scene.setRoot(loadFXML(fxml));
-       if(!stage.isMaximized() && !stage.isFullScreen()){
-           stage.sizeToScene();
-       }
+        scene.setRoot(loadFXML(fxml));
+        if (!stage.isMaximized() && !stage.isFullScreen()) {
+            stage.sizeToScene();
+        }
     }
 
     /**
