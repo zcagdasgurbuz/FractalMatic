@@ -46,7 +46,7 @@ public class UiUtil {
         dialogPane.getButtonTypes().add(ButtonType.YES);
         dialogPane.getButtonTypes().add(ButtonType.NO);
         dialogPane.getStylesheets().add(
-                getClass().getResource("/circles/ui/circles.css").toExternalForm());
+                getClass().getResource("/fractalmatic/styles.css").toExternalForm());
 
         dialogPane.setOnMousePressed(pressEvent -> {
             dialogPane.setOnMouseDragged(dragEvent -> {

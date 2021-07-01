@@ -38,7 +38,7 @@ public class App extends Application {
         //stage/window settings
         App.stage = stage;
         stage.setTitle("FractalMatic");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/fractalmatic/icon.png")).toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/fractalmatic/img/icon.png")).toExternalForm()));
         stage.setMinWidth(300); // min 300x300
         stage.setMinHeight(300);
         stage.setResizable(true);
@@ -58,7 +58,7 @@ public class App extends Application {
         //fonts getting added, not sure this would work without internet connection after bundling the app
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;500;700;800&display=swap");
         // style sheet needs to be attached again, because it seems that JFXDecorator removes style sheet
-        scene.getStylesheets().add(getClass().getResource("/circles/ui/circles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/fractalmatic/styles.css").toExternalForm());
         //ready to go
         stage.setScene(scene);
         stage.show();
@@ -79,7 +79,6 @@ public class App extends Application {
             stage.sizeToScene();
         }
     }
-
 
     /**
      * This method reads the fxml file and returns
