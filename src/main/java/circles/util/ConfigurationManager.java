@@ -27,9 +27,11 @@ public enum ConfigurationManager {
     INSTANCE;
 
     /** The config file name. */
-    final String CONFIG_FILE_NAME = "savedConfigs.fm";
+    final String CONFIG_FILE_NAME = "circlesSavedConfigs.fm";
     /** The last saved file name. */
     final String LAST_SAVED_FILE_NAME = "lastSaved.fm";
+    final String LAST_SAVED_CONFIG_NAME = "---last-saved-configuration-before-close---";
+
     /** The debug info. */
     final boolean VERBOSE = false;
     /** The try limit of randomizer - if randomizer fails to generate an acceptable config, tries again. */
@@ -45,6 +47,7 @@ public enum ConfigurationManager {
     private HashMap<String, CheckBox> randomizerCheckBoxes;
     /** The start with last config check box. */
     private CheckBox startLastConfigCheckBox;
+
     /** The last configuration before closing saved. */
     private CirclesConfiguration lastSaved;
 
@@ -65,13 +68,14 @@ public enum ConfigurationManager {
         if (!readConfigs()) {
             configurations = FXCollections.observableArrayList();
         }
-        if (getLastSavedConfigurations() != null) {
-            PropertyManager.INSTANCE.setConfiguration(lastSaved);
+        CirclesConfiguration last = getLastSavedConfigurations();
+        if (last != null) {
+            PropertyManager.INSTANCE.setConfiguration(last);
             startLastConfigCheckBox.setSelected(true);
-            lastSaved = null;
         } else {
             PropertyManager.INSTANCE.setConfiguration(getDefault());
         }
+
         listView.setItems(configurations);
     }
 
@@ -414,20 +418,11 @@ public enum ConfigurationManager {
      * Handles the saving process of the configuration if start with last config is selected
      */
     public void handleSavingBeforeClosing() {
-        try {
-            FileOutputStream fileOut = new FileOutputStream(LAST_SAVED_FILE_NAME);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            if (startLastConfigCheckBox.isSelected()) {
-                lastSaved = PropertyManager.INSTANCE.getCurrentConfiguration();
-            } else {
-                lastSaved = null;
-            }
-            objectOut.writeObject(lastSaved);
-            objectOut.close();
-            fileOut.close();
-            if (VERBOSE) System.out.println("config write out run");
-        } catch (IOException ex) {
-            if (VERBOSE) System.out.println("config write out catch");
+        if (startLastConfigCheckBox.isSelected()) {
+            CirclesConfiguration last = PropertyManager.INSTANCE.getCurrentConfiguration();
+            last.setName(LAST_SAVED_CONFIG_NAME);
+            configurations.add(last);
+            writeConfigs();
         }
     }
 
@@ -437,16 +432,14 @@ public enum ConfigurationManager {
      * @return the last saved configurations
      */
     public CirclesConfiguration getLastSavedConfigurations() {
-        try {
-            FileInputStream fileIn = new FileInputStream(LAST_SAVED_FILE_NAME);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            lastSaved = (CirclesConfiguration) objectIn.readObject();
-            objectIn.close();
-            fileIn.close();
-            return lastSaved;
-        } catch (IOException | ClassNotFoundException e) {
-            return null;
+        CirclesConfiguration last = new CirclesConfiguration(LAST_SAVED_CONFIG_NAME);
+        int idx = configurations.indexOf(last);
+        if( idx >= 0){
+            last = configurations.get(idx);
+            configurations.remove(idx);
+            return last;
         }
+        return null;
     }
 
     /**
