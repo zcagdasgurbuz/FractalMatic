@@ -47,9 +47,6 @@ public enum ConfigurationManager {
     /** The start with last config check box. */
     private CheckBox startLastConfigCheckBox;
 
-    /** The last configuration before closing saved. */
-    private CirclesConfiguration lastSaved;
-
 
     /**
      * Sets list view of saved configurations
