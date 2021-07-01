@@ -21,8 +21,8 @@
             <artifactId>javafx-fxml</artifactId>
             <version>15.0.1</version>
         </dependency>
-<!--        fat jar build dependencies -->
-         <!--<dependency>
+        <!--fat jar build dependencies-->
+<!--         <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
              <version>15.0.1</version>
