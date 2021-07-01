@@ -73,7 +73,6 @@ public class App extends Application {
     public static void setRoot(String fxml) {
         String[] fullPath = fxml.split("/");
         currentFxml = fullPath[fullPath.length - 1];
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
         //set content
         scene.setRoot(loadFXML(fxml));
         if (!stage.isMaximized() && !stage.isFullScreen()) {
@@ -127,7 +126,6 @@ public class App extends Application {
      * @param args console arguments
      */
     public static void main(String[] args) {
-        System.out.println();
         launch();
     }
 

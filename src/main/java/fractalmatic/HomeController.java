@@ -29,7 +29,6 @@ public class HomeController {
     public void initialize() {
         fractalList.getItems().add("Circles");
         fractalList.getSelectionModel().selectedIndexProperty().addListener(((observable, oldValue, newValue) -> {
-            System.out.println(newValue);
             if (fractalList.getSelectionModel().getSelectedItem().equals("Circles")) {
                 fractalLogo.setImage(new Image(getClass().getResource("/fractalmatic/circlesBig.png").toExternalForm()));
                 fractalLogo.setTranslateX(-200);
