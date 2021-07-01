@@ -75,7 +75,6 @@ public enum ConfigurationManager {
         } else {
             PropertyManager.INSTANCE.setConfiguration(getDefault());
         }
-
         listView.setItems(configurations);
     }
 
