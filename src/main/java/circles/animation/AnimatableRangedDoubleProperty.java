@@ -7,12 +7,19 @@ import javafx.beans.property.SimpleDoubleProperty;
  */
 public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty implements Animatable{
 
+    /** The minimum value of the range. */
     private double min;
+    /** The maximum value of the range. */
     private double max;
+    /** The animation start value. */
     private double animationStartValue;
+    /** The animation behavior. */
     private AnimationBehavior animationBehavior;
+    /** The animation active status. */
     private boolean animationActiveStatus;
+    /** The animator. */
     private Animator animator;
+    /** The id of the animatable. */
     private String id;
 
     /**

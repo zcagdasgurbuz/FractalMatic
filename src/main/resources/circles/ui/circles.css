@@ -173,22 +173,6 @@
 }
 
 /* ------------------------------------------------------- */
-/*                      Decorator                          */
-/* ------------------------------------------------------- */
-
-
-.jfx-decorator .jfx-decorator-buttons-container {
-    -fx-background-color: -fx-base;
-    -fx-font-size: 16;
-    -fx-font-weight: bolder;
-}
-
-.jfx-decorator .resize-border {
-    -fx-border-color: -fx-base;
-    -fx-border-width: 0 4 4 4;
-
-}
-/* ------------------------------------------------------- */
 /*                      Config Menu                        */
 /* ------------------------------------------------------- */
 
@@ -214,6 +198,14 @@
 
 .animationCloseButton:hover {
     -fx-background-color: -fx-accent;
+}
+
+/* ------------------------------------------------------- */
+/*                  Save/Load, Randomizer                  */
+/* ------------------------------------------------------- */
+
+.randomizerSettings{
+    -fx-background-color: -fx-base;
 }
 
 /* ------------------------------------------------------- */
@@ -248,10 +240,10 @@
 }
 
 
-.randomizerSettings{
-    -fx-background-color: -fx-base;
-}
 
+/* ------------------------------------------------------- */
+/*                   -------------------                   */
+/* ------------------------------------------------------- */
 
 .closeButton{
     -fx-min-width: 25px;

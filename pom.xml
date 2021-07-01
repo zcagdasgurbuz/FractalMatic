@@ -21,7 +21,7 @@
             <artifactId>javafx-fxml</artifactId>
             <version>15.0.1</version>
         </dependency>
-        <!--no need below part for windows build -->
+<!--        fat jar build dependencies -->
 <!--         <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
@@ -40,7 +40,7 @@
              <version>15.0.1</version>
              <classifier>mac</classifier>
          </dependency>-->
-        <!--no need above part for windows build -->
+        <!--fat jar build dependencies -->
         <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>

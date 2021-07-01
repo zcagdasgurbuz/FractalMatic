@@ -1,14 +1,15 @@
 package fractalmatic;
 
 import circles.util.ConfigurationManager;
-import com.jfoenix.controls.JFXDecorator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -16,31 +17,39 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    /** The decorator - fancy window. */
-    private static JFXDecorator decorator;
     /** The name of the fxml file that is currently shown. */
     private static String currentFxml;
+    static Scene scene;
+    static Stage stage;
 
     /**
      * Application starting point, gets called by Application.
      *
      * @param stage passed by Application class
-     * @throws IOException  the exception is thrown when problem with fxml file loading
+     * @throws IOException the exception is thrown when problem with fxml file loading
      */
     @Override
     public void start(Stage stage) throws IOException {
         //stage/window settings
+        App.stage = stage;
         stage.setTitle("FractalMatic");
+        stage.getIcons().add(new Image(getClass().getResource("/fractalmatic/icon.png").toExternalForm()));
         stage.setMinWidth(300); // min 300x300
         stage.setMinHeight(300);
-        stage.setResizable(false); // no resizing, including maximize and full screen button
+        stage.setResizable(true);
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (KeyCode.F11.equals(event.getCode())) {
+                stage.setFullScreen(!stage.isFullScreen());
+            }
+        });
+
+        //stage.initStyle(StageStyle.UNDECORATED);
         //load first menu
         currentFxml = "Home.fxml";
-        Parent content = FXMLLoader.load(getClass().getResource("/fractalmatic/Home.fxml"));
-        //change the stage style with jfoenix
-        decorator = new JFXDecorator(stage, content);
-        decorator.setCustomMaximize(false);
-        Scene scene = new Scene(decorator);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fractalmatic/Home.fxml"));
+        Parent content = fxmlLoader.load();
+
+        scene = new Scene(content);
         //fonts getting added, not sure this would work without internet connection after bundling the app
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;500;700;800&display=swap");
         // style sheet needs to be attached again, because it seems that JFXDecorator removes style sheet
@@ -54,35 +63,23 @@ public class App extends Application {
      * This method changes the content of the stage/decorator, also resizes the window to the content's size
      * if the window is not fullscreen or is not maximized. If so, the current sizing does not change.
      *
-     * @param fxml  fxml file to be loaded to current window
+     * @param fxml fxml file to be loaded to current window
      */
-    public static void setRoot(String fxml){
-        boolean isMaximized = ((Stage)decorator.getScene().getWindow()).isMaximized();
-        boolean isFullScreen = ((Stage)decorator.getScene().getWindow()).isFullScreen();
-        //save current fxml file name
+    public static void setRoot(String fxml) {
         String[] fullPath = fxml.split("/");
-        currentFxml = fullPath[fullPath.length -1];
+        currentFxml = fullPath[fullPath.length - 1];
         //set content
-        decorator.setContent(loadFXML(fxml));
-        if(!isMaximized && !isFullScreen){
-            decorator.getScene().getWindow().sizeToScene();
-        }
-    }
-
-    /**
-     * This method changes the resizeable state of the window
-     *
-     * @param resizeable new resizeable state
-     */
-    public static void setResizeable(boolean resizeable){
-        ((Stage)decorator.getScene().getWindow()).setResizable(resizeable);
+       scene.setRoot(loadFXML(fxml));
+       if(!stage.isMaximized() && !stage.isFullScreen()){
+           stage.sizeToScene();
+       }
     }
 
     /**
      * This method reads the fxml file and returns
      *
-     * @param fxml  the fxml file, including location and extension, to be read
-     * @return  the component is read from the fxml file
+     * @param fxml the fxml file, including location and extension, to be read
+     * @return the component is read from the fxml file
      */
     private static Parent loadFXML(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
@@ -96,8 +93,8 @@ public class App extends Application {
     }
 
     @Override
-    public void stop(){
-        if(currentFxml.toLowerCase().contains("circles") && currentFxml.toLowerCase().contains("main")){
+    public void stop() {
+        if (currentFxml.toLowerCase().contains("circles") && currentFxml.toLowerCase().contains("main")) {
             ConfigurationManager.INSTANCE.handleSavingBeforeClosing();
         }
     }
@@ -105,7 +102,7 @@ public class App extends Application {
     /**
      * Main method...
      *
-     * @param args  console arguments
+     * @param args console arguments
      */
     public static void main(String[] args) {
         System.out.println();

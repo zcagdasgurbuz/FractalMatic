@@ -34,8 +34,6 @@ public class HomeController {
         if (fractalList.getSelectionModel().getSelectedItem() != null &&
                 fractalList.getSelectionModel().getSelectedItem().equals("Circles")) {
             App.setRoot("/circles/ui/CirclesMainUi.fxml");
-            App.setResizeable(true);
-
         }
     }
 
