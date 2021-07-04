@@ -1,4 +1,4 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 /**
  * This interface can be thought as a part of a strategy pattern, handles the actual animation behavior
@@ -6,25 +6,18 @@ package fractalmatic.circles.animation;
 public interface AnimationBehavior {
 
     /**
-     * Sets the range of the animation
-     *
-     * @param range  the range of the animation
-     */
-    void setRange(double range);
-
-    /**
-     *  Retrieves the range of the animation
+     * Retrieves the range of the animation
      *
      * @return the range of the animation
      */
     double getRange();
 
     /**
-     * Sets the speed of the animation
+     * Sets the range of the animation
      *
-     * @param speed  the speed of the animation
+     * @param range the range of the animation
      */
-    void setSpeed(double speed);
+    void setRange(double range);
 
     /**
      * Retrieves the speed of the animation
@@ -32,6 +25,13 @@ public interface AnimationBehavior {
      * @return the speed of the animation
      */
     double getSpeed();
+
+    /**
+     * Sets the speed of the animation
+     *
+     * @param speed the speed of the animation
+     */
+    void setSpeed(double speed);
 
     /**
      * Resets the animation

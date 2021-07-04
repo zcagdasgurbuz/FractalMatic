@@ -1,10 +1,10 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 /**
  * This interface can be thought of as an observer, however there are more of an observer since there are some other
  * functions to be able to perform animation
  */
-public interface Animatable extends Comparable<Animatable>{
+public interface Animatable extends Comparable<Animatable> {
 
     /**
      * This method is an update request, performs necessary functions
@@ -13,16 +13,10 @@ public interface Animatable extends Comparable<Animatable>{
 
     /**
      * This tells whether the animation is active
+     *
      * @return whether the animation is active
      */
     boolean getActiveStatus();
-
-    /**
-     * This method sets the animation behavior of the animatable
-     *
-     * @param animationBehavior the animation behavior is to be used in this animatable
-     */
-    void setAnimationBehavior(AnimationBehavior animationBehavior);
 
     /**
      * This method retrieves of the animation behavior
@@ -32,11 +26,11 @@ public interface Animatable extends Comparable<Animatable>{
     AnimationBehavior getAnimationBehavior();
 
     /**
-     * This method sets the animator, the animator can be thought of as the subject in observer pattern
+     * This method sets the animation behavior of the animatable
      *
-     * @param animator the animator of the animatable object
+     * @param animationBehavior the animation behavior is to be used in this animatable
      */
-    void setAnimator(Animator animator);
+    void setAnimationBehavior(AnimationBehavior animationBehavior);
 
     /**
      * This method retrieves the current animator of the animatable, the animator can be thought of as the subject in observer pattern
@@ -44,6 +38,13 @@ public interface Animatable extends Comparable<Animatable>{
      * @return the animator
      */
     Animator getAnimator();
+
+    /**
+     * This method sets the animator, the animator can be thought of as the subject in observer pattern
+     *
+     * @param animator the animator of the animatable object
+     */
+    void setAnimator(Animator animator);
 
     /**
      * This method starts the animation, if animator is set, attaches itself to animatable
@@ -56,7 +57,7 @@ public interface Animatable extends Comparable<Animatable>{
     void stop();
 
     /**
-     *  This method retrieves the value when the animation starts
+     * This method retrieves the value when the animation starts
      *
      * @return animation base value
      */
@@ -64,6 +65,7 @@ public interface Animatable extends Comparable<Animatable>{
 
     /**
      * This retrieves the id of animatable
+     *
      * @return id
      */
     String getId();

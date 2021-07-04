@@ -1,10 +1,10 @@
 package fractalmatic.circles.calculation;
 
-import fractalmatic.circles.animation.Animatable;
-import fractalmatic.circles.animation.AnimatableRangedDoubleProperty;
 import fractalmatic.circles.animation.AnimationManager;
-import fractalmatic.circles.animation.OscillationBehavior;
-import fractalmatic.circles.util.CirclesConfiguration;
+import fractalmatic.circles.config.CirclesConfiguration;
+import fractalmatic.common.animation.Animatable;
+import fractalmatic.common.animation.AnimatableRangedDoubleProperty;
+import fractalmatic.common.animation.OscillationBehavior;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -81,6 +81,8 @@ public enum PropertyManager {
     private final ChangeListener<Object> changeListener;
     /** The drawing enabled property */
     private final BooleanProperty drawingEnabledProperty;
+    /** The all animatables */
+    private final ObservableList<AnimatableRangedDoubleProperty> animatableList;
     /** The calculation manager instance */
     CalculationManager calculationManager = CalculationManager.INSTANCE;
     /** The animation manager instance */
@@ -93,8 +95,6 @@ public enum PropertyManager {
     private CheckBox opacityFinalCheckBox;
     /** The all control from configuration menu */
     private Map<String, Control> configControls;
-    /** The all animatables */
-    private final ObservableList<AnimatableRangedDoubleProperty> animatableList;
 
     /**
      * Constructor, initializes the fields
@@ -420,7 +420,7 @@ public enum PropertyManager {
      * @return the list observable list of all animatable properties
      */
     public ObservableList<Animatable> getAnimatableList() {
-       return FXCollections.observableArrayList(animatableList);
+        return FXCollections.observableArrayList(animatableList);
     }
 
     /**

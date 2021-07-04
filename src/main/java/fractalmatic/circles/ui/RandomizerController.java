@@ -1,6 +1,6 @@
 package fractalmatic.circles.ui;
 
-import fractalmatic.circles.util.ConfigurationManager;
+import fractalmatic.circles.config.ConfigurationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;

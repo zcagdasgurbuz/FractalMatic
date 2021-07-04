@@ -1,4 +1,4 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.LongProperty;
@@ -59,18 +59,18 @@ public interface Animator {
     void stop();
 
     /**
-     * Sets max frame rate of the animation.
-     *
-     * @param maxFrameRate the max frame rate
-     */
-    void setMaxFrameRate(int maxFrameRate);
-
-    /**
      * Gets max frame rate of the animation.
      *
      * @return the max frame rate
      */
     int getMaxFrameRate();
+
+    /**
+     * Sets max frame rate of the animation.
+     *
+     * @param maxFrameRate the max frame rate
+     */
+    void setMaxFrameRate(int maxFrameRate);
 
     /**
      * Animation active property -tells whether the animation is active.

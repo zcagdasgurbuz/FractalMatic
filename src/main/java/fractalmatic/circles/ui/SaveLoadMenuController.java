@@ -2,8 +2,8 @@ package fractalmatic.circles.ui;
 
 import fractalmatic.circles.animation.AnimationManager;
 import fractalmatic.circles.calculation.PropertyManager;
-import fractalmatic.circles.util.CirclesConfiguration;
-import fractalmatic.circles.util.ConfigurationManager;
+import fractalmatic.circles.config.CirclesConfiguration;
+import fractalmatic.circles.config.ConfigurationManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;

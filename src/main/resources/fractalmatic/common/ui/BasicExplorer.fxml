@@ -5,7 +5,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <Pane fx:id="explorer" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="fractalmatic.circles.ui.CirclesExplorerController">
+      fx:controller="fractalmatic.common.ui.BasicExplorerController">
     <children>
         <Canvas fx:id="canvas" height="2800.0" width="2800.0" managed="false"/>
     </children>

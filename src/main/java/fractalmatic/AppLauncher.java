@@ -11,8 +11,8 @@ public class AppLauncher {
      */
     public static void main(String[] args) {
         //System.setProperty("prism.verbose","true");
-        System.setProperty("prism.forceGPU","true");
-        System.setProperty("prism.order","d3d,sw");
+        System.setProperty("prism.forceGPU", "true");
+        System.setProperty("prism.order", "d3d,sw");
         App.main(args);
     }
 }

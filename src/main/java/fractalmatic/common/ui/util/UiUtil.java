@@ -1,4 +1,4 @@
-package fractalmatic.circles.util;
+package fractalmatic.common.ui.util;
 
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
@@ -47,7 +47,7 @@ public class UiUtil {
         dialogPane.getButtonTypes().add(ButtonType.NO);
         dialogPane.getStylesheets().add(
                 getClass().getResource("/fractalmatic/styles.css").toExternalForm());
-
+        //make dialog movable, found this way of doing online somewhere, very clever.
         dialogPane.setOnMousePressed(pressEvent -> {
             dialogPane.setOnMouseDragged(dragEvent -> {
                 alert.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
@@ -57,9 +57,7 @@ public class UiUtil {
 
         alert.showAndWait()
                 .filter(response -> response == ButtonType.YES)
-                .ifPresent(response -> {
-                    result.set(true);
-                });
+                .ifPresent(response -> result.set(true));
 
         return result.get();
     }

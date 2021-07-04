@@ -10,9 +10,9 @@
 
 <StackPane fx:id="slidingMenu" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
            minWidth="-Infinity" prefWidth="300.0" translateX="-305" xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml" fx:controller="fractalmatic.circles.ui.SlidingMenuController">
+           xmlns:fx="http://javafx.com/fxml" fx:controller="fractalmatic.common.ui.SlidingMenuController">
     <children>
-        <fx:include fx:id="circlesMenu" source="CirclesMenu.fxml"/>
+        <fx:include fx:id="circlesMenu" source="../../circles/ui/CirclesMenu.fxml"/>
         <JFXHamburger fx:id="hamburgerMenuButton" accessibleRole="BUTTON" alignment="TOP_RIGHT" fillWidth="false"
                       maxHeight="20.0" maxWidth="30.0" onMousePressed="#menuButtonAction" translateX="310.0"
                       translateY="15.0"/>

@@ -1,11 +1,11 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 import javafx.beans.property.SimpleDoubleProperty;
 
 /**
  * This class is an animatable double property.
  */
-public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty implements Animatable{
+public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty implements Animatable {
 
     /** The minimum value of the range. */
     private double min;
@@ -61,30 +61,21 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
     }
 
     /**
-     * Sets the minimum limit
-     *
-     * @param min the minimum limit
-     */
-    public void setMin(double min) {
-        this.min = min;
-    }
-
-    /**
-     * Sets the maximum limit
-     *
-     * @param max the maximum limit
-     */
-    public void setMax(double max) {
-        this.max = max;
-    }
-
-    /**
      * Retrieves the minimum limit
      *
      * @return the minimum limit
      */
     public double getMin() {
         return min;
+    }
+
+    /**
+     * Sets the minimum limit
+     *
+     * @param min the minimum limit
+     */
+    public void setMin(double min) {
+        this.min = min;
     }
 
     /**
@@ -97,14 +88,12 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
     }
 
     /**
-     * Sets id
+     * Sets the maximum limit
      *
-     * @param id id
+     * @param max the maximum limit
      */
-    public void setId(String id) {
-        if (id != null) {
-            this.id = id;
-        }
+    public void setMax(double max) {
+        this.max = max;
     }
 
     /**
@@ -114,6 +103,17 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
      */
     public String getId() {
         return id;
+    }
+
+    /**
+     * Sets id
+     *
+     * @param id id
+     */
+    public void setId(String id) {
+        if (id != null) {
+            this.id = id;
+        }
     }
 
     /**
@@ -180,6 +180,14 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
      * {@inheritDoc}
      */
     @Override
+    public AnimationBehavior getAnimationBehavior() {
+        return animationBehavior;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setAnimationBehavior(AnimationBehavior animationBehavior) {
         if (animationBehavior != null) {
             this.animationBehavior = animationBehavior;
@@ -190,8 +198,8 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
      * {@inheritDoc}
      */
     @Override
-    public AnimationBehavior getAnimationBehavior() {
-        return animationBehavior;
+    public Animator getAnimator() {
+        return animator;
     }
 
     /**
@@ -200,14 +208,6 @@ public class AnimatableRangedDoubleProperty extends SimpleDoubleProperty impleme
     @Override
     public void setAnimator(Animator animator) {
         this.animator = animator;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Animator getAnimator() {
-        return animator;
     }
 
     /**

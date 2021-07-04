@@ -7,6 +7,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -19,15 +20,15 @@ public class FractalGenerator {
     private final GraphicsContext graphicsContext;
     /** The explorer pane to be used to draw background */
     private final Pane explorer;
-    /** Whether the rendering is active*/
-    private boolean isRenderingActive;
-    /** The number of drawn circles prop -updates in every drawing*/
+    /** The number of drawn circles prop -updates in every drawing */
     private final IntegerProperty drawnCircles;
+    /** Whether the rendering is active */
+    private boolean isRenderingActive;
 
     /**
      * Constructor..
      *
-     * @param explorer the pane is to be used for background color
+     * @param explorer        the pane is to be used for background color
      * @param graphicsContext the graphic context is to be used for drawing
      */
     public FractalGenerator(Pane explorer, GraphicsContext graphicsContext) {
@@ -41,21 +42,21 @@ public class FractalGenerator {
     /**
      * This method draws the fractal with the given parameters.
      *
-     * @param backgroundColor  background color to be set
-     * @param fractalFinalColorActive  whether the final fractal color is active
-     * @param fractalColor  fractal color to be set
-     * @param fractalFinalColor the final fractal color to be set
-     * @param childCount    the child count to be drawn
-     * @param maxRecursions  the maximum recursions tobe drawn
-     * @param startAngle    the angle that the first child to be drawn at
-     * @param radius    the radius of the first circle
-     * @param sizeRatio the size ratio between parent and child
-     * @param lineWidthFinalActive  whether the final line width is active
-     * @param lineWidth the line width
-     * @param lineWidthFinal    the final line width
-     * @param opacityFinalActive    whether the final opacity is active
-     * @param opacity   the opacity
-     * @param opacityFinal  the final opacity
+     * @param backgroundColor         background color to be set
+     * @param fractalFinalColorActive whether the final fractal color is active
+     * @param fractalColor            fractal color to be set
+     * @param fractalFinalColor       the final fractal color to be set
+     * @param childCount              the child count to be drawn
+     * @param maxRecursions           the maximum recursions tobe drawn
+     * @param startAngle              the angle that the first child to be drawn at
+     * @param radius                  the radius of the first circle
+     * @param sizeRatio               the size ratio between parent and child
+     * @param lineWidthFinalActive    whether the final line width is active
+     * @param lineWidth               the line width
+     * @param lineWidthFinal          the final line width
+     * @param opacityFinalActive      whether the final opacity is active
+     * @param opacity                 the opacity
+     * @param opacityFinal            the final opacity
      */
     public void drawFractal(Color backgroundColor,
                             boolean fractalFinalColorActive, Color fractalColor, Color fractalFinalColor,
@@ -133,20 +134,20 @@ public class FractalGenerator {
     /**
      * This helper method performs the actual drawing.
      *
-     * @param x x coordinate of the first circle
-     * @param y y coordinate of the first circle
-     * @param radius    the radius of the first circle
-     * @param sizeRatio the size ratio of the parent to its child
-     * @param childCount    the child count
-     * @param startAngle    the angle that the first child to be drawn at
-     * @param finalColorActive   whether the final fractal color is active
-     * @param maxRecursions the number of recursions
-     * @param colors    colors for every recursion level
-     * @param lineWidthFinalActive  whether the final line width is active
-     * @param lineWidths    line widths for every recursion level
-     * @param opacityFinalActive    whether the final opacity is active
-     * @param opacities opacities for every recursion level
-     * @param graphicsContext   the graphics context is to be used to draw
+     * @param x                    x coordinate of the first circle
+     * @param y                    y coordinate of the first circle
+     * @param radius               the radius of the first circle
+     * @param sizeRatio            the size ratio of the parent to its child
+     * @param childCount           the child count
+     * @param startAngle           the angle that the first child to be drawn at
+     * @param finalColorActive     whether the final fractal color is active
+     * @param maxRecursions        the number of recursions
+     * @param colors               colors for every recursion level
+     * @param lineWidthFinalActive whether the final line width is active
+     * @param lineWidths           line widths for every recursion level
+     * @param opacityFinalActive   whether the final opacity is active
+     * @param opacities            opacities for every recursion level
+     * @param graphicsContext      the graphics context is to be used to draw
      */
     private void generateFractal(double x, double y, double radius, double sizeRatio,
                                  int childCount, double startAngle, boolean finalColorActive,
@@ -226,14 +227,15 @@ public class FractalGenerator {
 
     /**
      * This method retrieves the number of drawn circles property, property is updated by every draw request
-     * @return  the number of drawn circles property
+     *
+     * @return the number of drawn circles property
      */
     public IntegerProperty drawnCircles() {
         return drawnCircles;
     }
 
 
-    public void centerFractal(){
+    public void centerFractal() {
 
     }
 

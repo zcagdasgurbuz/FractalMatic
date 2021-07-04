@@ -1,7 +1,7 @@
-package fractalmatic.circles.ui;
+package fractalmatic.common.ui;
 
 import fractalmatic.circles.calculation.CalculationManager;
-import fractalmatic.circles.util.SimpleRangedDoubleProperty;
+import fractalmatic.common.util.SimpleRangedDoubleProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 /**
  * Fractal Explorer controller, handles the dragging and zooming
  */
-public class CirclesExplorerController {
+public class BasicExplorerController {
 
 
     /** The x coordinate prop of canvas */
@@ -28,17 +28,17 @@ public class CirclesExplorerController {
     public Pane explorer;
     /** The canvas where drawing happens. */
     public Canvas canvas;
+    /** The calculation manager */
+    CalculationManager calculationManager = CalculationManager.INSTANCE;
     /** The captured x coordinate when mouse pressed. */
     private Double capturedX;
     /** The captured y coordinate when mouse pressed */
     private Double capturedY;
-    /** The calculation manager */
-    CalculationManager calculationManager = CalculationManager.INSTANCE;
 
     /**
      * Instantiates a new Circles explorer controller.
      */
-    public CirclesExplorerController() {
+    public BasicExplorerController() {
         canvasX = new SimpleDoubleProperty();
         canvasY = new SimpleDoubleProperty();
         capturedX = 0.0;

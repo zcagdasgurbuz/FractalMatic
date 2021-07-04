@@ -1,7 +1,10 @@
 package fractalmatic.circles.animation;
 
 import fractalmatic.circles.calculation.PropertyManager;
-import fractalmatic.circles.util.CirclesConfiguration;
+import fractalmatic.circles.config.CirclesConfiguration;
+import fractalmatic.common.animation.Animatable;
+import fractalmatic.common.animation.Animator;
+import fractalmatic.common.animation.FractalAnimator;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -51,8 +54,6 @@ public enum AnimationManager {
 
     /** The shown animatable list. */
     private final ObservableList<Animatable> shownAnimatableList;
-    /** Available / stand by animatable list. */
-    private ObservableList<Animatable> availableAnimatableList;
     /** The animator that is going to control animatables. */
     private final FractalAnimator animator;
     /** The halted property. */
@@ -67,17 +68,18 @@ public enum AnimationManager {
     private final Map<Animatable, Slider> activeSpeedSliders;
     /** Active/shown start buttons in the animation menu. */
     private final Map<Animatable, Button> activeStartButtons;
-    /** The animation box that contains shown animation controls. */
-    private VBox animationBox;
-    /** The animation menu scroll pane. */
-    private ScrollPane animationScrollPane;
-
-    /** Menu item that shows available animatables */
-    private ComboBox<Animatable> animatableComboBox;
     /** The listener that is getting assigned to animator */
     private final ChangeListener<Object> animationListener;
     /** The listener that is going to be assigned to controls when the animation is active. */
     private final ChangeListener<Object> animationCheckListener;
+    /** Available / stand by animatable list. */
+    private ObservableList<Animatable> availableAnimatableList;
+    /** The animation box that contains shown animation controls. */
+    private VBox animationBox;
+    /** The animation menu scroll pane. */
+    private ScrollPane animationScrollPane;
+    /** Menu item that shows available animatables */
+    private ComboBox<Animatable> animatableComboBox;
 
     /**
      * Constructor, initializes necessary fields
@@ -488,7 +490,7 @@ public enum AnimationManager {
                 requestAmplitudeChange(animatable, newValue.doubleValue()));
 
         speedSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-            requestSpeedChange(animatable, newValue.doubleValue())
+                requestSpeedChange(animatable, newValue.doubleValue())
         );
 
         animationStartStopButton.setOnAction(event -> {

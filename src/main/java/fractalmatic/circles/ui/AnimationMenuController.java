@@ -1,8 +1,8 @@
 package fractalmatic.circles.ui;
 
-import fractalmatic.circles.animation.Animatable;
-import fractalmatic.circles.animation.AnimatableRangedDoubleProperty;
 import fractalmatic.circles.animation.AnimationManager;
+import fractalmatic.common.animation.Animatable;
+import fractalmatic.common.animation.AnimatableRangedDoubleProperty;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
  */
 public class AnimationMenuController {
 
+    private final AnimationManager animationManager = AnimationManager.INSTANCE;
     public Button addComponentButton;
     public ComboBox<Animatable> animatableComboBox;
     public VBox activeAnimationVBox;
@@ -23,9 +24,6 @@ public class AnimationMenuController {
     public Button startAllButton;
     public Button removeAllButton;
     public ScrollPane animationScrollPane;
-
-    private final AnimationManager animationManager = AnimationManager.INSTANCE;
-
 
     /**
      * Initializes before loading

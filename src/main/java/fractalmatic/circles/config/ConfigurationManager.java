@@ -1,8 +1,9 @@
-package fractalmatic.circles.util;
+package fractalmatic.circles.config;
 
 import fractalmatic.circles.animation.AnimationManager;
 import fractalmatic.circles.calculation.CalculationManager;
 import fractalmatic.circles.calculation.PropertyManager;
+import fractalmatic.common.ui.util.UiUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
@@ -42,7 +43,7 @@ public enum ConfigurationManager {
     private ListView<CirclesConfiguration> listView;
     /** The saved configurations. */
     private ObservableList<CirclesConfiguration> configurations;
-    /** The randomizer check boxes. -to see what's selected*/
+    /** The randomizer check boxes. -to see what's selected */
     private HashMap<String, CheckBox> randomizerCheckBoxes;
     /** The start with last config check box. */
     private CheckBox startLastConfigCheckBox;
@@ -429,7 +430,7 @@ public enum ConfigurationManager {
     public CirclesConfiguration getLastSavedConfigurations() {
         CirclesConfiguration last = new CirclesConfiguration(LAST_SAVED_CONFIG_NAME);
         int idx = configurations.indexOf(last);
-        if( idx >= 0){
+        if (idx >= 0) {
             last = configurations.get(idx);
             configurations.remove(idx);
             return last;

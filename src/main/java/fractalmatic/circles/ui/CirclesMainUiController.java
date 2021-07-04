@@ -1,10 +1,11 @@
 package fractalmatic.circles.ui;
 
+import fractalmatic.App;
 import fractalmatic.circles.animation.AnimationManager;
 import fractalmatic.circles.calculation.PropertyManager;
-import fractalmatic.circles.util.ConfigurationManager;
-import fractalmatic.circles.util.UiUtil;
-import fractalmatic.App;
+import fractalmatic.circles.config.ConfigurationManager;
+import fractalmatic.common.ui.BasicExplorerController;
+import fractalmatic.common.ui.util.UiUtil;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class CirclesMainUiController {
     public Pane mainPane;
     /** The fractal explorer */
     @FXML
-    public Pane circlesExplorer;
+    public Pane basicExplorer;
     /** The sliding menu */
     @FXML
     public StackPane slidingMenu;
@@ -45,7 +46,7 @@ public class CirclesMainUiController {
     public Button closeButton;
     /** The circles explorer controller */
     @FXML
-    CirclesExplorerController circlesExplorerController;
+    BasicExplorerController basicExplorerController;
 
     /**
      * Initializes before loading
@@ -76,12 +77,12 @@ public class CirclesMainUiController {
         Button btn = new Button();
         btn.setShape(closeButtonSVG);
 
-        circlesExplorer.prefWidthProperty().bind(mainPane.widthProperty());
-        circlesExplorer.prefHeightProperty().bind(mainPane.heightProperty());
+        basicExplorer.prefWidthProperty().bind(mainPane.widthProperty());
+        basicExplorer.prefHeightProperty().bind(mainPane.heightProperty());
         //clip explorer since canvas is huge, otherwise JFXDecorator right and bottom border do not show up.
 
         Rectangle clipPane = new Rectangle();
-        circlesExplorer.setClip(clipPane);
+        basicExplorer.setClip(clipPane);
         mainPane.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
             clipPane.setWidth(newValue.getWidth());
             clipPane.setHeight(newValue.getHeight());
@@ -103,7 +104,7 @@ public class CirclesMainUiController {
     /**
      * Resets fractal center.
      */
-    public void resetFractalCenter(){
-        Platform.runLater(()-> circlesExplorerController.resetCenterPoint());
+    public void resetFractalCenter() {
+        Platform.runLater(() -> basicExplorerController.resetCenterPoint());
     }
 }

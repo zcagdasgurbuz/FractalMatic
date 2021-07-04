@@ -1,7 +1,7 @@
 package fractalmatic;
 
+import fractalmatic.circles.config.ConfigurationManager;
 import fractalmatic.circles.ui.CirclesMainUiController;
-import fractalmatic.circles.util.ConfigurationManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,12 +20,69 @@ import java.util.Objects;
  */
 public class App extends Application {
 
-    /** The name of the fxml file that is currently shown. */
-    private static String currentFxml;
     /** The scene. */
     static Scene scene;
     /** The stage. */
     static Stage stage;
+    /** The name of the fxml file that is currently shown. */
+    private static String currentFxml;
+
+    /**
+     * This method changes the content of the stage/decorator, also resizes the window to the content's size
+     * if the window is not fullscreen or is not maximized. If so, the current sizing does not change.
+     *
+     * @param fxml fxml file to be loaded to current window
+     */
+    public static void setRoot(String fxml) {
+        String[] fullPath = fxml.split("/");
+        currentFxml = fullPath[fullPath.length - 1];
+        //set content
+        scene.setRoot(loadFXML(fxml));
+        if (!stage.isMaximized() && !stage.isFullScreen()) {
+            stage.sizeToScene();
+        }
+    }
+
+    /**
+     * This method reads the fxml file and returns
+     *
+     * @param fxml the fxml file, including location and extension, to be read
+     * @return the component is read from the fxml file
+     */
+    private static Parent loadFXML(String fxml) {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
+        Parent parent = new Pane();
+        try {
+            parent = fxmlLoader.load();
+            bindFullAndMaxBehaviors(fxmlLoader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return parent;
+    }
+
+    /**
+     * Binds full screen and maximized behaviors.
+     *
+     * @param loader the loader of the resource to be used to get controller\
+     */
+    private static void bindFullAndMaxBehaviors(FXMLLoader loader) {
+        if (currentFxml.equals("CirclesMainUi.fxml")) {
+            CirclesMainUiController controller = loader.getController();
+            stage.fullScreenProperty().addListener((observable, oldValue, newValue) -> controller.resetFractalCenter());
+            stage.maximizedProperty().addListener(((observable, oldValue, newValue) -> controller.resetFractalCenter()));
+        }
+        //some other fractal behaviors
+    }
+
+    /**
+     * Main method...
+     *
+     * @param args console arguments
+     */
+    public static void main(String[] args) {
+        launch();
+    }
 
     /**
      * Application starting point, gets called by Application.
@@ -64,68 +121,11 @@ public class App extends Application {
         stage.show();
     }
 
-    /**
-     * This method changes the content of the stage/decorator, also resizes the window to the content's size
-     * if the window is not fullscreen or is not maximized. If so, the current sizing does not change.
-     *
-     * @param fxml fxml file to be loaded to current window
-     */
-    public static void setRoot(String fxml) {
-        String[] fullPath = fxml.split("/");
-        currentFxml = fullPath[fullPath.length - 1];
-        //set content
-        scene.setRoot(loadFXML(fxml));
-        if (!stage.isMaximized() && !stage.isFullScreen()) {
-            stage.sizeToScene();
-        }
-    }
-
-    /**
-     * This method reads the fxml file and returns
-     *
-     * @param fxml        the fxml file, including location and extension, to be read
-     * @return the component is read from the fxml file
-     */
-    private static Parent loadFXML(String fxml) {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
-        Parent parent = new Pane();
-        try {
-            parent = fxmlLoader.load();
-            bindFullAndMaxBehaviors(fxmlLoader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return parent;
-    }
-
-    /**
-     * Binds full screen and maximized behaviors.
-     *
-     * @param loader the loader of the resource to be used to get controller\
-     */
-    private static void bindFullAndMaxBehaviors(FXMLLoader loader) {
-        if (currentFxml.equals("CirclesMainUi.fxml")) {
-            CirclesMainUiController controller = loader.getController();
-            stage.fullScreenProperty().addListener((observable, oldValue, newValue) -> controller.resetFractalCenter());
-            stage.maximizedProperty().addListener(((observable, oldValue, newValue) -> controller.resetFractalCenter()));
-        }
-        //some other fractal behaviors
-    }
-
     @Override
     public void stop() {
         if (currentFxml.toLowerCase().contains("circles") && currentFxml.toLowerCase().contains("main")) {
             ConfigurationManager.INSTANCE.handleSavingBeforeClosing();
         }
-    }
-
-    /**
-     * Main method...
-     *
-     * @param args console arguments
-     */
-    public static void main(String[] args) {
-        launch();
     }
 
 }

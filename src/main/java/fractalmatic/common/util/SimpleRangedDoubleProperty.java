@@ -1,4 +1,4 @@
-package fractalmatic.circles.util;
+package fractalmatic.common.util;
 
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -33,38 +33,29 @@ public class SimpleRangedDoubleProperty extends SimpleDoubleProperty {
     /**
      * Instantiates a new simple ranged double property.
      *
-     * @param min   the minimum limit of the range
-     * @param max   the maximum limit of the range
+     * @param min the minimum limit of the range
+     * @param max the maximum limit of the range
      */
     public SimpleRangedDoubleProperty(double min, double max) {
-        this(min,max,min);
-    }
-
-    /**
-     * Set minimum limit of the range
-     *
-     * @param min   the minimum limit of the range
-     */
-    public void setMin(double min){
-        this.min = min;
-    }
-
-    /**
-     * Set maximum limit of the range
-     *
-     * @param max   the maximum limit of the range
-     */
-    public void setMax(double max){
-        this.max = max;
+        this(min, max, min);
     }
 
     /**
      * Gets minimum value of the range
      *
-     * @return  the minimum limit of the range
+     * @return the minimum limit of the range
      */
     public double getMin() {
         return min;
+    }
+
+    /**
+     * Set minimum limit of the range
+     *
+     * @param min the minimum limit of the range
+     */
+    public void setMin(double min) {
+        this.min = min;
     }
 
     /**
@@ -72,13 +63,22 @@ public class SimpleRangedDoubleProperty extends SimpleDoubleProperty {
      *
      * @return the maximum limit of the range
      */
-    public double getMax(){
+    public double getMax() {
         return max;
     }
 
     /**
-     * {@inheritDoc}
+     * Set maximum limit of the range
      *
+     * @param max the maximum limit of the range
+     */
+    public void setMax(double max) {
+        this.max = max;
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
      * * does not set the value if the value is not in the range
      */
     @Override
@@ -90,13 +90,13 @@ public class SimpleRangedDoubleProperty extends SimpleDoubleProperty {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * * does not set the value if the value is not in the range
      */
     @Override
     public void setValue(Number value) {
         if (value != null) {
-            if(checkIfInRange(value.doubleValue()))
+            if (checkIfInRange(value.doubleValue()))
                 super.setValue(value);
         }
     }
@@ -107,7 +107,7 @@ public class SimpleRangedDoubleProperty extends SimpleDoubleProperty {
      * @param value the value is to be checked
      * @return the boolean
      */
-    private boolean checkIfInRange(double value){
+    private boolean checkIfInRange(double value) {
         return Double.compare(min, value) <= 0 && Double.compare(max, value) >= 0;
     }
 }

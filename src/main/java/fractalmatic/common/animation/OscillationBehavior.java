@@ -1,4 +1,4 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 /**
  * The type Oscillation behavior.
@@ -61,6 +61,12 @@ public class OscillationBehavior implements AnimationBehavior {
 
     /** {@inheritDoc} */
     @Override
+    public double getRange() {
+        return range;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public void setRange(double range) {
         this.range = Math.abs(range);
         this.amplitude = range / 2.0;
@@ -68,8 +74,8 @@ public class OscillationBehavior implements AnimationBehavior {
 
     /** {@inheritDoc} */
     @Override
-    public double getRange() {
-        return range;
+    public double getSpeed() {
+        return speed;
     }
 
     /** {@inheritDoc} */
@@ -80,12 +86,6 @@ public class OscillationBehavior implements AnimationBehavior {
         } else {
             this.speed = Math.abs(speed);
         }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public double getSpeed() {
-        return speed;
     }
 
     /** {@inheritDoc} */

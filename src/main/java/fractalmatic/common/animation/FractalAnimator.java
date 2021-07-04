@@ -1,4 +1,4 @@
-package fractalmatic.circles.animation;
+package fractalmatic.common.animation;
 
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.BooleanProperty;
@@ -137,17 +137,17 @@ public class FractalAnimator implements Animator {
 
     /** {@inheritDoc} */
     @Override
+    public int getMaxFrameRate() {
+        return maxFrameRate;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public void setMaxFrameRate(int maxFrameRate) {
         if (maxFrameRate != 0) {
             this.maxFrameRate = Math.abs(maxFrameRate);
             pulseInterval = 1000000 / maxFrameRate;
         }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public int getMaxFrameRate() {
-        return maxFrameRate;
     }
 
     /** {@inheritDoc} */

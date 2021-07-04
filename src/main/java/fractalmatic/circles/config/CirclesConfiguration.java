@@ -1,4 +1,4 @@
-package fractalmatic.circles.util;
+package fractalmatic.circles.config;
 
 import javafx.scene.paint.Color;
 

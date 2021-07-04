@@ -8,5 +8,10 @@ module fractalmatic {
     exports fractalmatic.circles.animation;
     exports fractalmatic.circles.calculation;
     exports fractalmatic.circles.ui;
-    exports fractalmatic.circles.util;
+    exports fractalmatic.circles.config;
+    exports fractalmatic.common.ui;
+    opens fractalmatic.common.ui to javafx.fxml;
+    exports fractalmatic.common.animation;
+    exports fractalmatic.common.util;
+    exports fractalmatic.common.ui.util;
 }

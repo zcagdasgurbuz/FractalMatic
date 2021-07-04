@@ -1,4 +1,4 @@
-package fractalmatic.circles.ui;
+package fractalmatic.common.ui;
 
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
