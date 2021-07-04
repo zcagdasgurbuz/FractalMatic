@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<HBox fx:id="mainBox" prefWidth="300.0" spacing="5.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fractalmatic.circles.ui.RandomizerController">
+    <children>
+        <VBox prefWidth="150.0" spacing="5.0">
+            <children>
+                <Label text="Configuration"/>
+                <Separator prefWidth="200.0"/>
+                <CheckBox fx:id="backgroundColorCheckBox" mnemonicParsing="false" text="Background Color"/>
+                <CheckBox fx:id="fractalColorCheckBox" mnemonicParsing="false" text="Fractal Color"/>
+                <CheckBox fx:id="fractalFinalColorCheckBox" mnemonicParsing="false" text="Fractal Final Color"/>
+                <CheckBox fx:id="childCountCheckBox" mnemonicParsing="false" text="Child Count"/>
+                <CheckBox fx:id="recursionDepthCheckBox" mnemonicParsing="false" text="Recursion Depth"/>
+                <CheckBox fx:id="startAngleCheckBox" mnemonicParsing="false" text="Start Angle"/>
+                <CheckBox fx:id="initialRadiusCheckBox" mnemonicParsing="false" text="Initial Radius"/>
+                <CheckBox fx:id="sizeRatioCheckBox" mnemonicParsing="false" text="Size Ratio"/>
+                <CheckBox fx:id="lineWidthCheckBox" mnemonicParsing="false" text="Line Width"/>
+                <CheckBox fx:id="lineWidthFinalCheckBox" mnemonicParsing="false" text="Line Width Final"/>
+                <CheckBox fx:id="opacityCheckBox" mnemonicParsing="false" text="Opacity"/>
+                <CheckBox fx:id="opacityFinalCheckBox" mnemonicParsing="false" text="Opacity Final"/>
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+            </padding>
+        </VBox>
+        <Separator orientation="VERTICAL" prefHeight="200.0"/>
+        <VBox prefWidth="150.0" spacing="5.0">
+            <children>
+                <Label text="Animation"/>
+                <Separator prefWidth="135.0"/>
+                <CheckBox fx:id="startAngleAnimationCheckBox" mnemonicParsing="false" text="Start Angle"/>
+                <CheckBox fx:id="initialRadiusAnimationCheckBox" mnemonicParsing="false" text="Initial Radius"/>
+                <CheckBox fx:id="sizeRatioAnimationCheckBox" mnemonicParsing="false" text="Size Ratio"/>
+                <CheckBox fx:id="lineWidthAnimationCheckBox" mnemonicParsing="false" text="Line Width"/>
+                <CheckBox fx:id="lineWidthFinalAnimationCheckBox" mnemonicParsing="false" text="Line Width Final"/>
+                <CheckBox fx:id="opacityAnimationCheckBox" mnemonicParsing="false" text="Opacity"/>
+                <CheckBox fx:id="opacityFinalAnimationCheckBox" mnemonicParsing="false" text="Opacity Final"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Separator prefWidth="135.0"/>
+                <HBox>
+                    <children>
+                        <VBox>
+                            <children>
+                                <Button fx:id="addAllConfigsButton" mnemonicParsing="false" prefWidth="70.0"
+                                        text="Add Configs" onAction="#addAllConfigsButtonAction">
+                                    <font>
+                                        <Font size="6.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="removeAllConfigsButton" mnemonicParsing="false" prefWidth="70.0"
+                                        text="Remove configs" onAction="#removeAllConfigsButtonAction">
+                                    <font>
+                                        <Font size="6.0"/>
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <VBox>
+                            <children>
+                                <Button fx:id="addAllAnimationsButton" mnemonicParsing="false" prefWidth="70.0"
+                                        text="Add Animations" onAction="#addAllAnimationsButtonAction">
+                                    <font>
+                                        <Font size="6.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="removeAllAnimationsButton" mnemonicParsing="false" prefWidth="70.0"
+                                        text="Remove Animations" onAction="#removeAllAnimationsButtonAction">
+                                    <font>
+                                        <Font size="6.0"/>
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+            </padding>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+    </padding>
+</HBox>

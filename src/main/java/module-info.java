@@ -3,10 +3,10 @@ module fractalmatic {
     requires javafx.fxml;
     requires com.jfoenix;
     opens fractalmatic to javafx.fxml;
-    opens circles.ui to javafx.fxml;
+    opens fractalmatic.circles.ui to javafx.fxml;
     exports fractalmatic;
-    exports circles.animation;
-    exports circles.calculation;
-    exports circles.ui;
-    exports circles.util;
+    exports fractalmatic.circles.animation;
+    exports fractalmatic.circles.calculation;
+    exports fractalmatic.circles.ui;
+    exports fractalmatic.circles.util;
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="300.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="fractalmatic.circles.ui.SaveLoadMenuController">
+    <content>
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Configuration Name"/>
+                <TextField fx:id="configNameField"/>
+                <ListView fx:id="configNamesListView" prefHeight="149.0"/>
+                <HBox fillHeight="false" spacing="10.0">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" prefWidth="75.0" text="Save" disable="true"
+                                onAction="#saveButtonAction"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="loadButton" mnemonicParsing="false" prefWidth="75.0" text="Load" disable="true"
+                                onAction="#loadButtonAction"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="removeButton" mnemonicParsing="false" prefWidth="75.0" text="Remove"
+                                disable="true" onAction="#removeButtonAction"/>
+                    </children>
+                </HBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Randomizer"/>
+                        <HBox spacing="20.0">
+                            <children>
+                                <Button fx:id="randomizeButton" mnemonicParsing="false" prefWidth="140.0"
+                                        text="Randomize" onAction="#randomizeButtonAction"/>
+                                <Button fx:id="randomizerSettingsButton" mnemonicParsing="false" prefWidth="140.0"
+                                        text="Settings" onAction="#randomizerSettingsButtonAction"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Settings"/>
+                        <CheckBox fx:id="startLastConfigCheckBox" text="Start with last config"/>
+                        <Label text="Maximum circles limit configuration "/>
+                        <TextField fx:id="configMaxCirclesLimitTextField"/>
+                        <Label text="Maximum circles limit animation "/>
+                        <TextField fx:id="animationMaxCirclesLimitTextField"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+
+    </content>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+</ScrollPane>

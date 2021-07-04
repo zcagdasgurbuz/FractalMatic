@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.canvas.Canvas?>
+<Pane fx:id="explorer" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fractalmatic.circles.ui.CirclesExplorerController">
+    <children>
+        <Canvas fx:id="canvas" height="2800.0" width="2800.0" managed="false"/>
+    </children>
+</Pane>

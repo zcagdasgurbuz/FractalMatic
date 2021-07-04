@@ -1,7 +1,7 @@
 package fractalmatic;
 
-import circles.ui.CirclesMainUiController;
-import circles.util.ConfigurationManager;
+import fractalmatic.circles.ui.CirclesMainUiController;
+import fractalmatic.circles.util.ConfigurationManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

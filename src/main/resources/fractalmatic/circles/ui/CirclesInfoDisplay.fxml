@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fractalmatic.circles.ui.CirclesInfoDisplayController">
+    <children>
+        <VBox spacing="5.0">
+            <children>
+                <Label styleClass="infoLabel" text="# of circles drawn:"/>
+                <Text styleClass="infoText" fx:id="drawnCircles" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
+                <Text styleClass="infoErrorText" fx:id="errorMessage" strokeType="OUTSIDE"
+                      strokeWidth="0.0" text="Text" managed="${errorMessage.visible}" visible="false" wrappingWidth="280.0"/>
+                <Label styleClass="infoLabel" text="Animation Status:"/>
+                <Text styleClass="infoText" fx:id="animationStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
+                <Text styleClass="infoErrorText" fx:id="animationErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Text" managed="${animationErrorMessage.visible}" visible="false" wrappingWidth="280.0"/>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </VBox>
+    </children>
+</Pane>

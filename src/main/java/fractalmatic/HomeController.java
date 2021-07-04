@@ -72,7 +72,7 @@ public class HomeController {
         //check listview and decide application
         if (fractalList.getSelectionModel().getSelectedItem() != null &&
                 fractalList.getSelectionModel().getSelectedItem().equals("Circles")) {
-            App.setRoot("/circles/ui/CirclesMainUi.fxml");
+            App.setRoot("/fractalmatic/circles/ui/CirclesMainUi.fxml");
         }
     }
 
