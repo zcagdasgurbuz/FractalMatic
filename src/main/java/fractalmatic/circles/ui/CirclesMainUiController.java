@@ -24,7 +24,7 @@ import javafx.scene.shape.SVGPath;
  */
 public class CirclesMainUiController {
 
-    /** The close button svg shape */
+    /** The home button svg shape */
     private static final String homeButtonPath = "M10 0 20 8 17 8 17 20 12 20 12 11 8 11 8 20 3 20 3 8 0 8 10 0";
 
 
@@ -37,7 +37,7 @@ public class CirclesMainUiController {
     /** The sliding menu */
     @FXML
     public StackPane slidingMenu;
-    /** The close button */
+    /** The home button */
     @FXML
     public Button homeButton;
     /** The circles explorer controller */
