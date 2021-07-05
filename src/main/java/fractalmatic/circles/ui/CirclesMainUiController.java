@@ -25,11 +25,7 @@ import javafx.scene.shape.SVGPath;
 public class CirclesMainUiController {
 
     /** The close button svg shape */
-    private static final String closeButtonPath = "M90.914,5.296c6.927-7.034,18.188-7.065,25.154-0.068 c6.961,6.995,6.991,18.369," +
-            "0.068,25.397L85.743,61.452l30.425,30.855c6.866,6.978,6.773,18.28-0.208,25.247 c-6.983,6.964-18.21," +
-            "6.946-25.074-0.031L60.669,86.881L30.395,117.58c-6.927,7.034-18.188,7.065-25.154,0.068 c-6.961-6.995-" +
-            "6.992-18.369-0.068-25.397l30.393-30.827L5.142,30.568c-6.867-6.978-6.773-18.28,0.208-25.247 c6.983-6.963," +
-            "18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z";
+    private static final String homeButtonPath = "M10 0 20 8 17 8 17 20 12 20 12 11 8 11 8 20 3 20 3 8 0 8 10 0";
 
 
     /** The main pane that contains everything */
@@ -43,7 +39,7 @@ public class CirclesMainUiController {
     public StackPane slidingMenu;
     /** The close button */
     @FXML
-    public Button closeButton;
+    public Button homeButton;
     /** The circles explorer controller */
     @FXML
     BasicExplorerController basicExplorerController;
@@ -54,13 +50,13 @@ public class CirclesMainUiController {
     @FXML
     void initialize() {
 
-        SVGPath closeButtonSVG = new SVGPath();
-        closeButtonSVG.setContent(closeButtonPath);
+        SVGPath homeButtonSVG = new SVGPath();
+        homeButtonSVG.setContent(homeButtonPath);
         // closeButton = new Region();// this is going to be actual close button
-        closeButton.setShape(closeButtonSVG); // region is converted to the svg shape
-        closeButton.getStyleClass().add("closeButton");
+        homeButton.setShape(homeButtonSVG); // region is converted to the svg shape
+        homeButton.getStyleClass().add("closeButton");
         //closeButton.getStyleClass().add("animationCloseButton");
-        closeButton.setOnAction(event -> {
+        homeButton.setOnAction(event -> {
 
             if (UiUtil.tools.alertYesOrNo("Do you want to turn back to main menu?")) {
                 if (ConfigurationManager.INSTANCE.shouldSaveBeforeClosing()) {
@@ -71,11 +67,11 @@ public class CirclesMainUiController {
             }
         });
 
-        closeButton.translateXProperty().bind(Bindings.subtract(mainPane.widthProperty(), 33));
-        closeButton.setTranslateY(8);
+        homeButton.translateXProperty().bind(Bindings.subtract(mainPane.widthProperty(), 33));
+        homeButton.setTranslateY(11);
 
         Button btn = new Button();
-        btn.setShape(closeButtonSVG);
+        btn.setShape(homeButtonSVG);
 
         basicExplorer.prefWidthProperty().bind(mainPane.widthProperty());
         basicExplorer.prefHeightProperty().bind(mainPane.heightProperty());

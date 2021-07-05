@@ -7,6 +7,6 @@
 
     <fx:include fx:id="basicExplorer" source="../../common/ui/BasicExplorer.fxml"/>
     <fx:include fx:id="slidingMenu" prefHeight="${mainPane.height}" source="../../common/ui/SlidingMenu.fxml"/>
-    <Button fx:id="closeButton"/>
+    <Button fx:id="homeButton"/>
 
 </Pane>
