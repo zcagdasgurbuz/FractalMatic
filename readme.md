@@ -62,5 +62,5 @@ You also use your mouse to drag the fractal around and zoom in. **Double-click**
 ### Java Version
 
 Java version : 11  
-JavaFx version : 11  
+JavaFx version : 15  
 Built by using Maven
