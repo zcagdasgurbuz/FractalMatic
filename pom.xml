@@ -22,7 +22,7 @@
             <version>15.0.1</version>
         </dependency>
         <!--fat jar build dependencies-->
-<!--    <dependency>
+   <!-- <dependency>
              <groupId>org.openjfx</groupId>
              <artifactId>javafx-graphics </artifactId>
              <version>15.0.1</version>
