@@ -53,9 +53,10 @@ After creating interesting fractals by Randomizer or setting parameters manually
 
 ---
 
-#### Drag / Zoom / Full Screen
+#### Drag / Zoom / Full Screen / Capture Mode
 
-You also use your mouse to drag the fractal around and zoom in. **Double-click** will reset the position and the zoom. Press **F11** for fullscreen mode.
+You also use your mouse to drag the fractal around and zoom in. **Double-click** will reset the position and the zoom. Press **F11** for fullscreen mode.  
+For capture mode use **CTRL + SHIFT + C** key combinations. It toggles the visibility of the menu and home buttons.
 
 ---
 
