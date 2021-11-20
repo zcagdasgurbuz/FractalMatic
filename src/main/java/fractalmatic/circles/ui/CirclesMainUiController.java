@@ -1,5 +1,6 @@
 package fractalmatic.circles.ui;
 
+import com.jfoenix.controls.JFXHamburger;
 import fractalmatic.App;
 import fractalmatic.circles.animation.AnimationManager;
 import fractalmatic.circles.calculation.PropertyManager;
@@ -83,11 +84,16 @@ public class CirclesMainUiController {
             clipPane.setWidth(newValue.getWidth());
             clipPane.setHeight(newValue.getHeight());
         });
-
+        JFXHamburger hamburgerMenuButton = (JFXHamburger) mainPane.lookup("#hamburgerMenuButton");
         KeyCombination cntrlR = new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN);
+        KeyCombination cntrlShiftC = new KeyCodeCombination(KeyCode.C, KeyCodeCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN);
         mainPane.setOnKeyPressed(event -> {
             if (cntrlR.match(event)) {
                 ConfigurationManager.INSTANCE.randomizeAndSet();
+            }
+            if(cntrlShiftC.match(event)){
+                homeButton.setVisible(!homeButton.isVisible());
+                hamburgerMenuButton.setVisible(!hamburgerMenuButton.isVisible());
             }
         });
 

@@ -89,7 +89,6 @@ public class BasicExplorerController {
             if (mouseEvent.getClickCount() == 2) {
                 resetCenterPoint();
             }
-
         });
     }
 

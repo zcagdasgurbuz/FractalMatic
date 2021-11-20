@@ -6,6 +6,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -37,6 +38,7 @@ public class SlidingMenuController {
     @FXML
     public void initialize() {
         //menu animation is being defined here!
+        hamburgerMenuButton.setId("hamburgerMenuButton");
         timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(slidingMenu.translateXProperty(), -305)),
                 new KeyFrame(Duration.ZERO, new KeyValue(hamburgerMenuButton.translateXProperty(), 310)),
@@ -46,6 +48,7 @@ public class SlidingMenuController {
         isOpen = false;
 
         burgerTask = new HamburgerBackArrowBasicTransition(hamburgerMenuButton);
+
         //burgerTask = new HamburgerSlideCloseTransition(hamburgerMenuButton); // different animation
         burgerTask.setRate(-1);
     }
