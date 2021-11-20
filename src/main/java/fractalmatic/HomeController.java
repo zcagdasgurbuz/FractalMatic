@@ -16,7 +16,7 @@ import javafx.util.Duration;
 public class HomeController {
 
     /** The circles fractal info. */
-    private final String CIRCLES_INFO = "F11: Fullscreen, CTRL + R: Randomize\nMouse: Drag/Zoom, Double-click: Reset position";
+    private final String CIRCLES_INFO = "F11: Fullscreen, CTRL + R: Randomize, CTRL + SHIFT + C: CaptureMode \nMouse: Drag/Zoom, Double-click: Reset position";
     /** The circles fractal logo path. */
     private final String CIRCLES_LOGO_PATH = "/fractalmatic/img/circlesBig.png";
 
